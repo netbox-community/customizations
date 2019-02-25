@@ -8,13 +8,13 @@ class DeviceRackingReport(Report):
     def test_device_racking(self):
         for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE):
             if device.rack_id is not None:
-                if device.face is not None:
-                    if device.position is not None:
-                        self.log_success(device)
-                    else:
-                        self.log_warning(device, "Device is racked, but not assigned a position")
+                if device.position is not None:
+                    self.log_success(device)
+
+                elif device.device_type.is_child_device:
+                    self.log_info(device, "Device is child device and therefore not racked itself")
                 else:
-                    self.log_warning(device, "Device is racked, but Face is not specified")
+                    self.log_warning(device, "Device is racked, but not assigned a position")
             else:
                 self.log_failure(device, "Device is not racked")
 

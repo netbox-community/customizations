@@ -16,6 +16,11 @@ MONTHS_IN_HOURS_6 = 24 * 180
 
 
 class StatusDates(Report):
+    """
+    These reports rely on a couple custom fields existing:
+        - Deprovision Date
+        - Decomm Date
+    """
 
     description = "Check status dates of circuits for discrepancies."
 

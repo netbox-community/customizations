@@ -30,7 +30,7 @@ class DeviceIPReport(Report):
                     if device.primary_ip6_id is not None:
                         self.log_failure(device, "Device has primary IPv4 and IPv6 address but no interfaces")
                     else:
-                        self.log_warn(device, "Device has missing primary IPv4 addresses but no interfaces")
+                        self.log_warning(device, "Device has missing primary IPv4 addresses but no interfaces")
                 else:
                     self.log_success(device)
             elif device.primary_ip4_id is None:

@@ -34,7 +34,7 @@ class Check_DNS_A_Record(Report):
                 except socket.gaierror as err:
                     self.log_info(device, "No IP or DNS found.")
 
-class Check_DNS_AAA_Record(Report):
+class Check_DNS_AAAA_Record(Report):
     description = "Check if device's primary IPv6 has DNS records"
 
     def test_dns_aaaa_record(self):

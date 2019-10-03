@@ -12,6 +12,11 @@ class Check_DNS_A_Record(Report):
 
     def test_dna_a_record(self):
         for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE):
+            if device.interfaces is None:
+                continue
+            if device.name is None:
+                self.log_info(device, "No device name")
+                continue
             if device.primary_ip4_id is not None:
                 try:
                     addr = socket.gethostbyname(device.name)
@@ -34,6 +39,11 @@ class Check_DNS_AAA_Record(Report):
 
     def test_dns_aaaa_record(self):
         for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE):
+            if device.interfaces is None:
+                continue
+            if device.name is None:
+                self.log_info(device, "No device name")
+                continue
             if device.primary_ip6_id is not None:
                 try:
                     aaaa = dns.resolver.query(device.name, "AAAA")

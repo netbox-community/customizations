@@ -4,7 +4,6 @@ from dcim.constants import DEVICE_STATUS_ACTIVE
 from dcim.models import Device
 from extras.reports import Report
 import socket, dns.resolver
-from extras.models import CustomFieldValue
 from ipam.constants import *
 from ipam.models import IPAddress
 

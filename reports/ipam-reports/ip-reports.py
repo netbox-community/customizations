@@ -1,18 +1,8 @@
 from dcim.constants import DEVICE_STATUS_ACTIVE
 from dcim.models import Device
 from virtualization.models import VirtualMachine
-from virtualization.constants import *
-from ipam.constants import *
-from ipam.models import IPAddress, Prefix, VRF, VLAN
+from ipam.constants import IPADDRESS_STATUS_DEPRECATED
 from extras.reports import Report
-from collections import defaultdict
-
-LOOPBACK_ROLES = [
-    IPADDRESS_ROLE_LOOPBACK,
-    IPADDRESS_ROLE_ANYCAST,
-    IPADDRESS_ROLE_VIP,
-    IPADDRESS_ROLE_VRRP,
-]
 
 # CheckPrimaryAddress reports forked from https://gist.github.com/candlerb/5380a7cdd03b60fbd02a664feb266d44
 class CheckPrimaryAddressDevice(Report):

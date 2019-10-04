@@ -1,5 +1,5 @@
 from ipam.constants import *
-from ipam.models import IPAddress, Prefix, VRF, VLAN
+from ipam.models import IPAddress, Prefix
 from extras.reports import Report
 
 LOOPBACK_ROLES = [

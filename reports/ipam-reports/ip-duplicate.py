@@ -1,15 +1,7 @@
 from ipam.constants import *
-from ipam.models import IPAddress, Prefix, VRF, VLAN
+from ipam.models import IPAddress
 from extras.reports import Report
-from collections import defaultdict
 from django.db.models import Q
-
-LOOPBACK_ROLES = [
-    IPADDRESS_ROLE_LOOPBACK,
-    IPADDRESS_ROLE_ANYCAST,
-    IPADDRESS_ROLE_VIP,
-    IPADDRESS_ROLE_VRRP,
-]
 
 # UniqueIPReport was forked from https://gist.github.com/dgarros/acc23b4fd8d42844b8a41f695e6cb769
 class UniqueIPReport(Report):

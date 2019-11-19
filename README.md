@@ -6,5 +6,8 @@ To contribute a new report, open a pull request. All reports go in the `reports/
 
 Nothing in this repository comes will any explicit or implied warranty. For more imformation see [the license](LICENSE).
 
-## Using Reports
-See the Netbox [report documentation](https://netbox.readthedocs.io/en/stable/additional-features/reports/#netbox-reports) for instructions about deploying the reports to your server.
+## Using Reports and Scripts
+See the Netbox documentation for:
+
+* [Reports](https://netbox.readthedocs.io/en/stable/additional-features/reports/)
+* [Custom scripts](https://netbox.readthedocs.io/en/latest/additional-features/custom-scripts/)

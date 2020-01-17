@@ -1,7 +1,6 @@
 from extras.reports import Report
 from dcim.models import Cable, RearPort
 from dcim.constants import *
-from circuits.models import CircuitTermination
 
 CABLE_TYPES_OK_BETWEEN_RACKS = {
     CABLE_TYPE_DAC_PASSIVE,
@@ -12,7 +11,7 @@ class CheckCableLocality(Report):
 
     def test_cable_endpoints(self):
         for cable in Cable.objects.prefetch_related('termination_a','termination_b').all():
-            if isinstance(cable.termination_a, CircuitTermination) or isinstance(cable.termination_b, CircuitTermination):
+            if not getattr(cable.termination_a, 'device', None) or not getattr(cable.termination_b, 'device', None):
                 continue
             if cable.termination_a.device.site != cable.termination_b.device.site:
                 self.log_failure(cable, "Endpoints in different sites: {} ({}) and {} ({})".format(

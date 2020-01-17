@@ -1,4 +1,4 @@
-from dcim.constants import DEVICE_STATUS_ACTIVE
+from dcim.choices import DeviceStatusChoices
 from dcim.models import Device
 from extras.reports import Report
 
@@ -6,7 +6,7 @@ class DeviceIPReport(Report):
     description = "Check that every device has either an IPv4 or IPv6 primary address assigned"
 
     def test_primary_ip4(self):
-        for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE):
+        for device in Device.objects.filter(status=DeviceStatusChoices.STATUS_ACTIVE):
             intcount = 0
             for interface in device.interfaces.all():
                 if not interface.mgmt_only:

@@ -1,7 +1,8 @@
-from dcim.constants import DEVICE_STATUS_ACTIVE
+from dcim.choices import DeviceStatusChoices
 from dcim.models import Device
+from virtualization.choices import VirtualMachineStatusChoices
 from virtualization.models import VirtualMachine
-from ipam.constants import IPADDRESS_STATUS_DEPRECATED
+from ipam.choices import IPAddressStatusChoices
 from extras.reports import Report
 
 # CheckPrimaryAddress reports forked from https://gist.github.com/candlerb/5380a7cdd03b60fbd02a664feb266d44
@@ -9,14 +10,14 @@ class CheckPrimaryAddressDevice(Report):
     description = "Check that every device with an assigned IP has a primary IP address assigned"
 
     def test_device_primary_ips(self):
-        for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE).prefetch_related('interfaces__ip_addresses').all():
+        for device in Device.objects.filter(status=DeviceStatusChoices.STATUS_ACTIVE).prefetch_related('interfaces__ip_addresses').all():
             fail = False
             intcount = 0
             all_addrs = {4: [], 6: []}
             for interface in device.interfaces.all():
                 if not interface.mgmt_only:
                     intcount += 1
-                    for addr in interface.ip_addresses.exclude(status=IPADDRESS_STATUS_DEPRECATED).all():
+                    for addr in interface.ip_addresses.exclude(status=IPAddressStatusChoices.STATUS_DEPRECATED).all():
                         all_addrs[addr.family].append(addr)
             # There may be dumb devices with no interfaces / IP addresses, that's OK
             if not device.primary_ip4 and all_addrs[4]:
@@ -43,14 +44,14 @@ class CheckPrimaryAddressVM(Report):
     description = "Check that every vm with an assigned IP has a primary IP address assigned"
 
     def test_vm_primary_ips(self):
-        for vm in VirtualMachine.objects.filter(status=DEVICE_STATUS_ACTIVE).prefetch_related('interfaces__ip_addresses').all():
+        for vm in VirtualMachine.objects.filter(status=VirtualMachineStatusChoices.STATUS_ACTIVE).prefetch_related('interfaces__ip_addresses').all():
             fail = False
             intcount = 0
             all_addrs = {4: [], 6: []}
             for interface in vm.interfaces.all():
                 if not interface.mgmt_only:
                     intcount += 1
-                    for addr in interface.ip_addresses.exclude(status=IPADDRESS_STATUS_DEPRECATED).all():
+                    for addr in interface.ip_addresses.exclude(status=IPAddressStatusChoices.STATUS_DEPRECATED).all():
                         all_addrs[addr.family].append(addr)
             # A VM is useless without an IP address
             if not all_addrs[4] and not all_addrs[6]:

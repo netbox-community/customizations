@@ -1,4 +1,4 @@
-from ipam.constants import *
+from ipam.choices import IPAddressRoleChoices
 from ipam.models import IPAddress
 from extras.reports import Report
 from django.db.models import Q
@@ -9,7 +9,7 @@ class UniqueIPReport(Report):
 
     def test_unique_ip(self):
         already_found = []
-        for ip in IPAddress.objects.exclude(Q(role=IPADDRESS_ROLE_ANYCAST) | Q(role=IPADDRESS_ROLE_VIP) | Q(role=IPADDRESS_ROLE_VRRP)):
+        for ip in IPAddress.objects.exclude(Q(role=IPAddressRoleChoices.ROLE_ANYCAST) | Q(role=IPAddressRoleChoices.ROLE_VIP) | Q(role=IPAddressRoleChoices.ROLE_VRRP)):
             if ip.address in already_found:
                continue
             elif not ip.interface:

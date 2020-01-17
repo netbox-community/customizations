@@ -1,9 +1,9 @@
 from extras.reports import Report
 from dcim.models import Cable, RearPort
-from dcim.constants import *
+from dcim.choices import CableTypeChoices
 
 CABLE_TYPES_OK_BETWEEN_RACKS = {
-    CABLE_TYPE_DAC_PASSIVE,
+    CableTypeChoices.TYPE_DAC_PASSIVE,
 }
 
 class CheckCableLocality(Report):

@@ -1,12 +1,12 @@
-from ipam.constants import *
-from ipam.models import IPAddress, Prefix, VRF, VLAN
+from ipam.choices import IPAddressRoleChoices
+from ipam.models import IPAddress, Prefix
 from extras.reports import Report
 
 LOOPBACK_ROLES = [
-    IPADDRESS_ROLE_LOOPBACK,
-    IPADDRESS_ROLE_ANYCAST,
-    IPADDRESS_ROLE_VIP,
-    IPADDRESS_ROLE_VRRP,
+    IPAddressRoleChoices.ROLE_LOOPBACK,
+    IPAddressRoleChoices.ROLE_ANYCAST,
+    IPAddressRoleChoices.ROLE_VIP,
+    IPAddressRoleChoices.ROLE_VRRP,
 ]
 
 # CheckPrefixLength forked from https://gist.github.com/candlerb/5380a7cdd03b60fbd02a664feb266d44

@@ -1,15 +1,7 @@
-from ipam.constants import *
-from ipam.models import IPAddress, Prefix, VRF, VLAN
+from ipam.choices import IPAddressRoleChoices
+from ipam.models import IPAddress
 from extras.reports import Report
-from collections import defaultdict
 from django.db.models import Q
-
-LOOPBACK_ROLES = [
-    IPADDRESS_ROLE_LOOPBACK,
-    IPADDRESS_ROLE_ANYCAST,
-    IPADDRESS_ROLE_VIP,
-    IPADDRESS_ROLE_VRRP,
-]
 
 # UniqueIPReport was forked from https://gist.github.com/dgarros/acc23b4fd8d42844b8a41f695e6cb769
 class UniqueIPReport(Report):
@@ -17,7 +9,7 @@ class UniqueIPReport(Report):
 
     def test_unique_ip(self):
         already_found = []
-        for ip in IPAddress.objects.exclude(Q(role=IPADDRESS_ROLE_ANYCAST) | Q(role=IPADDRESS_ROLE_VIP) | Q(role=IPADDRESS_ROLE_VRRP)):
+        for ip in IPAddress.objects.exclude(Q(role=IPAddressRoleChoices.ROLE_ANYCAST) | Q(role=IPAddressRoleChoices.ROLE_VIP) | Q(role=IPAddressRoleChoices.ROLE_VRRP)):
             if ip.address in already_found:
                continue
             elif not ip.interface:

@@ -1,17 +1,15 @@
 # Make sure to install the dnspython module for this to work (pip3 install dnspython)
 
-from dcim.constants import DEVICE_STATUS_ACTIVE
+from dcim.choices import DeviceStatusChoices
 from dcim.models import Device
 from extras.reports import Report
 import socket, dns.resolver
-from ipam.constants import *
-from ipam.models import IPAddress
 
 class Check_DNS_A_Record(Report):
     description = "Check if device's primary IPv4 has DNS records"
 
     def test_dna_a_record(self):
-        for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE):
+        for device in Device.objects.filter(status=DeviceStatusChoices.STATUS_ACTIVE):
             if device.interfaces is None:
                 continue
             if device.name is None:
@@ -38,7 +36,7 @@ class Check_DNS_AAAA_Record(Report):
     description = "Check if device's primary IPv6 has DNS records"
 
     def test_dns_aaaa_record(self):
-        for device in Device.objects.filter(status=DEVICE_STATUS_ACTIVE):
+        for device in Device.objects.filter(status=DeviceStatusChoices.STATUS_ACTIVE):
             if device.interfaces is None:
                 continue
             if device.name is None:

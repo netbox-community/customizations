@@ -1,6 +1,6 @@
 from django.db.models import Count, Q
 
-from dcim.constants import SITE_STATUS_ACTIVE
+from dcim.choices import SiteStatusChoices
 from dcim.models import Site
 from extras.reports import Report
 
@@ -16,7 +16,7 @@ class MplsCircuitReport(Report):
     def test_site_mpls_counts(self):
 
         site_circuit_counts = (
-            Site.objects.filter(status=SITE_STATUS_ACTIVE)
+            Site.objects.filter(status=SiteStatusChoices.STATUS_ACTIVE)
             .annotate(
                 mpls_count=Count(
                     "circuit_terminations",
@@ -63,7 +63,7 @@ class CircuitCountReport(Report):
                     circuit_terminations__circuit__status__in=[1, 2, 3, 4],
                 )
                 | Q(circuit_terminations__isnull=True),
-                status=SITE_STATUS_ACTIVE,
+                status=SiteStatusChoices.STATUS_ACTIVE,
             )
             .annotate(circuit_count=Count("circuit_terminations"))
             .order_by("name")

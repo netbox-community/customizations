@@ -1,6 +1,6 @@
 from django.db.models import Count
 
-from dcim.constants import SITE_STATUS_ACTIVE
+from dcim.choices import SiteStatusChoices
 from dcim.models import Site
 from extras.reports import Report
 
@@ -14,7 +14,7 @@ class VirtualizationReport(Report):
         Cluster exists for site.
         """
 
-        sites = Site.objects.filter(status=SITE_STATUS_ACTIVE)
+        sites = Site.objects.filter(status=SiteStatusChoices.STATUS_ACTIVE)
         missing_clusters = Site.objects.filter(clusters__isnull=True).exclude(
             tags__name__in=["no-cluster"]
         )

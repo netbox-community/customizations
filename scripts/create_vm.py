@@ -7,15 +7,15 @@ https://github.com/netbox-community/netbox/issues/1492
 https://github.com/netbox-community/netbox/issues/648
 """
 
-from dcim.constants import DEVICE_STATUS_ACTIVE, IFACE_TYPE_VIRTUAL
+from dcim.choices import InterfaceTypeChoices
 from dcim.models import DeviceRole, Platform, Interface
 from django.core.exceptions import ObjectDoesNotExist
-from ipam.constants import IPADDRESS_STATUS_ACTIVE
+from ipam.choices import IPAddressStatusChoices
 from ipam.models import IPAddress, VRF
 from tenancy.models import Tenant
-from virtualization.constants import VM_STATUS_CHOICES
+from virtualization.choices import VirtualMachineStatusChoices
 from virtualization.models import Cluster, VirtualMachine
-from extras.scripts import Script, StringVar, IPNetworkVar, ObjectVar, ChoiceVar, IntegerVar, TextVar
+from extras.scripts import Script, StringVar, IPAddressWithMaskVar, ObjectVar, ChoiceVar, IntegerVar, TextVar
 
 class NewVM(Script):
     class Meta:
@@ -28,11 +28,11 @@ class NewVM(Script):
 
     vm_name = StringVar(label="VM name")
     dns_name = StringVar(label="DNS name", required=False)
-    primary_ip4 = IPNetworkVar(label="IPv4 address")
-    primary_ip6 = IPNetworkVar(label="IPv6 address", required=False)
+    primary_ip4 = IPAddressWithMaskVar(label="IPv4 address")
+    primary_ip6 = IPAddressWithMaskVar(label="IPv6 address", required=False)
     #vrf = ObjectVar(VRF.objects, required=False)
-    role = ObjectVar(DeviceRole.objects.filter(vm_role=True))
-    status = ChoiceVar(VM_STATUS_CHOICES, default=DEVICE_STATUS_ACTIVE)
+    role = ObjectVar(DeviceRole.objects.filter(vm_role=True), required=False)
+    status = ChoiceVar(VirtualMachineStatusChoices, default=VirtualMachineStatusChoices.STATUS_ACTIVE)
     cluster = ObjectVar(Cluster.objects)
     #tenant = ObjectVar(Tenant.objects, required=False)
     platform = ObjectVar(Platform.objects, required=False)
@@ -60,7 +60,7 @@ class NewVM(Script):
 
         interface = Interface(
             name=data["interface_name"],
-            type=IFACE_TYPE_VIRTUAL,
+            type=InterfaceTypeChoices.TYPE_VIRTUAL,
             mac_address=data["mac_address"],
             virtual_machine=vm,
         )
@@ -85,7 +85,7 @@ class NewVM(Script):
                    vrf=data.get("vrf"),
                 )
                 result = "Created"
-            a.status = IPADDRESS_STATUS_ACTIVE
+            a.status = IPAddressStatusChoices.STATUS_ACTIVE
             a.dns_name = data["dns_name"]
             if a.interface:
                 raise RuntimeError("Address %s is already assigned" % addr)

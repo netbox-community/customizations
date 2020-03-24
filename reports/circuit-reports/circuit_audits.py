@@ -1,10 +1,7 @@
 import datetime
 
 from circuits.models import Circuit
-from circuits.constants import (
-    CIRCUIT_STATUS_DECOMMISSIONED,
-    CIRCUIT_STATUS_DEPROVISIONING,
-)
+from circuits.choices import CircuitStatusChoices
 from extras.models import CustomFieldValue
 from extras.reports import Report
 
@@ -27,7 +24,7 @@ class StatusDates(Report):
     def test_check_deprovisioned(self):
 
         deprovisioned_circuits = Circuit.objects.filter(
-            status=CIRCUIT_STATUS_DEPROVISIONING
+            status=CircuitStatusChoices.STATUS_DEPROVISIONING
         )
 
         deprovision_dates = CustomFieldValue.objects.filter(
@@ -73,7 +70,7 @@ class StatusDates(Report):
 
     def test_check_decommissioned(self):
 
-        decommed_circuits = Circuit.objects.filter(status=CIRCUIT_STATUS_DECOMMISSIONED)
+        decommed_circuits = Circuit.objects.filter(status=CircuitStatusChoices.STATUS_DECOMMISSIONED)
 
         decomm_dates = CustomFieldValue.objects.filter(
             field__name="decomm_date", obj_id__in=decommed_circuits

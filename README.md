@@ -10,4 +10,4 @@ Nothing in this repository comes will any explicit or implied warranty. For more
 See the Netbox documentation for:
 
 * [Reports](https://netbox.readthedocs.io/en/stable/additional-features/reports/)
-* [Custom scripts](https://netbox.readthedocs.io/en/latest/additional-features/custom-scripts/)
+* [Custom scripts](https://netbox.readthedocs.io/en/stable/additional-features/custom-scripts/)

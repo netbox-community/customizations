@@ -21,10 +21,6 @@ class CheckPrefixLength(Report):
             if str(a).startswith("fe80"):
                 self.log_success(ipaddr)
                 continue
-            if ipaddr.family != a.version:
-                self.log_failure(ipaddr, "family (%d) inconsistent with address.version (%d)" %
-                                 (ipaddr.family, a.version))
-                continue
             # We allow loopback-like things to be single address *or* have the parent prefix length
             if ipaddr.role in LOOPBACK_ROLES and a.size == 1:
                 self.log_success(ipaddr)

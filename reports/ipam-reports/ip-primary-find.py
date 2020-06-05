@@ -18,7 +18,7 @@ class CheckPrimaryAddressDevice(Report):
                 if not interface.mgmt_only:
                     intcount += 1
                     for addr in interface.ip_addresses.exclude(status=IPAddressStatusChoices.STATUS_DEPRECATED).all():
-                        all_addrs[addr.family].append(addr)
+                        all_addrs[addr.address.version].append(addr)
             # There may be dumb devices with no interfaces / IP addresses, that's OK
             if not device.primary_ip4 and all_addrs[4]:
                 self.log_failure(device, "Device has no primary IPv4 address (could be %s)" %
@@ -52,7 +52,7 @@ class CheckPrimaryAddressVM(Report):
                 if not interface.mgmt_only:
                     intcount += 1
                     for addr in interface.ip_addresses.exclude(status=IPAddressStatusChoices.STATUS_DEPRECATED).all():
-                        all_addrs[addr.family].append(addr)
+                        all_addrs[addr.address.version].append(addr)
             # A VM is useless without an IP address
             if not all_addrs[4] and not all_addrs[6]:
                 self.log_failure(vm, "Virtual machine has no IP addresses")

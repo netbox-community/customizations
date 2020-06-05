@@ -74,14 +74,12 @@ class NewVM(Script):
             try:
                 a = IPAddress.objects.get(
                     address=addr,
-                    family=addr.version,
                     vrf=data.get("vrf"),
                 )
                 result = "Assigned"
             except ObjectDoesNotExist:
                 a = IPAddress(
                    address=addr,
-                   family=addr.version,
                    vrf=data.get("vrf"),
                 )
                 result = "Created"

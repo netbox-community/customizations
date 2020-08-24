@@ -49,11 +49,13 @@ class CheckPrimaryAddressVM(Report):
             intcount = 0
             all_addrs = {4: [], 6: []}
             for interface in vm.interfaces.all():
-                if not interface.mgmt_only:
-                    intcount += 1
-                    for addr in interface.ip_addresses.exclude(status=IPAddressStatusChoices.STATUS_DEPRECATED).all():
-                        all_addrs[addr.address.version].append(addr)
+                intcount += 1
+                for addr in interface.ip_addresses.exclude(status=IPAddressStatusChoices.STATUS_DEPRECATED).all():
+                    all_addrs[addr.address.version].append(addr)
             # A VM is useless without an IP address
+            if intcount == 0:
+                self.log_failure(vm, "Virtual machine has no interfaces")
+                continue
             if not all_addrs[4] and not all_addrs[6]:
                 self.log_failure(vm, "Virtual machine has no IP addresses")
                 continue
@@ -66,7 +68,4 @@ class CheckPrimaryAddressVM(Report):
                               " ".join([str(a) for a in all_addrs[6]]))
                 fail = True
             if not fail:
-                if intcount == 0:
-                    self.log_warning(vm, "No interfaces assigned to vm")
-                else:
-                    self.log_success(vm)
+                self.log_success(vm)

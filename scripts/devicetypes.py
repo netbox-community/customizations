@@ -9,6 +9,12 @@ Allows:
 - Import by Model (filename)
 
 Inspired by https://github.com/netbox-community/reports/pull/34
+Requires: GitPython
+
+Installation:
+1. Copy to the scripts dir
+2. Set up parent dir (user must have write permissions within this dir)
+3. `pip install GitPython`
 """
 
 import os

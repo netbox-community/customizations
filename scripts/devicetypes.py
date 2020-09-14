@@ -4,7 +4,7 @@ DeviceType Library Management:
 Allows:
 
 - Import DeviceTypes Library from repo
-- Update repo (via pull request)
+- Update repo (via pull)
 - Import by Manufacturer
 - Import by Model (filename)
 

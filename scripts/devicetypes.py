@@ -14,7 +14,8 @@ Requires: GitPython
 
 Installation:
 1. Copy to the scripts dir
-2. Set up parent dir (user must have write permissions within this dir)
+2. Create a new empty folder and update the devicetype_parent_dir variable to reference the folder (user must have write permissions within this dir)
+2a. (Optional) Change devicetype_repo_dir according to your demands
 3. `pip install GitPython`
 """
 

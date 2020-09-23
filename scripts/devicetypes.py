@@ -1,14 +1,15 @@
 
 """
 DeviceType Library Management:
-Allows:
 
+Allows:
 - Import DeviceTypes Library from repo
 - Update repo (via pull)
 - Import by Manufacturer
 - Import by Model (filename)
 
 Inspired by https://github.com/netbox-community/reports/pull/34
+
 Requires: GitPython
 
 Installation:
@@ -31,9 +32,9 @@ from dcim.models import (DeviceType, Manufacturer, ConsolePortTemplate,
                          InterfaceTemplate)
 from extras.scripts import *
 
-devicetype_parent_dir = "/opt"
-devicetype_repo_dir = "devicetype-library"
-devicetype_lib_dir = "device-types"
+devicetype_parent_dir = os.path.realpath("/opt/shared/")
+devicetype_repo_dir =   "devicetype-library"
+devicetype_lib_dir =    "device-types"
 
 devicetype_repo = "https://github.com/netbox-community/devicetype-library"
 
@@ -50,14 +51,26 @@ class CreateDeviceType(Script):
 
     def run(self, data, commit):
 
-        devicetype_dir = os.path.join(
-            self.devicetype_parent_dir,
-            "devicetype-library"
+        devicetype_dir = os.path.realpath(
+            os.path.join(
+                self.devicetype_parent_dir,
+                devicetype_repo_dir
+            )
         )
 
+        # TODO: Remove debug code
+        # for (dirpath, dirnames, filenames) in os.walk('/opt/'):
+        #     self.log_info(f"{dirpath}{dirnames}")
+
         if not os.path.isdir(self.devicetype_parent_dir):
-            self.log_error("{self.devicetype_parent_dir} is not a dir")
-            return "Script failed"
+            try:
+                os.makedirs(self.devicetype_parent_dir, exist_ok=True)
+                self.log_info("Created new dirs: f{self.devicetype_parent_dir}")
+            except OSError as error:
+                self.log_failure(f"{self.devicetype_parent_dir} creation failed (check permissions)")
+                return f"Script failed: {error}"
+        else:
+            self.log_info(f"Parent dir present - {self.devicetype_parent_dir}")
 
         if os.path.isdir(devicetype_dir):
             self.log_info("DeviceType library already exists - pulling")
@@ -65,17 +78,17 @@ class CreateDeviceType(Script):
             repo.remotes.origin.pull()
 
         else:
-            self.log_info("Cloning DeviceType library")
+            self.log_info("DeviceType is nonexistent - cloning")
             repo = Repo.clone_from(
                 devicetype_repo,
-                self.devicetype_parent_dir,
+                devicetype_dir,
                 branch='master'
             )
             repo.remotes.origin.pull()
 
 
 
-        self.log_success("Repo has been updated")
+        self.log_success(f"Repo has been updated {devicetype_dir}")
 
 
 

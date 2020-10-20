@@ -30,7 +30,10 @@ class CheckPrimaryAddressDevice(Report):
                 fail = True
             if not fail:
                 # There may be dumb devices that are used as patch panels. Check for front/back ports
-                if device.frontports.count() > 0 and device.rearports.count() > 0:
+                if intcount == 0 and device.frontports.count() > 0 and device.rearports.count() > 0:
+                    self.log_success(device)
+                # Or dumb PDUs
+                elif intcount == 0 and device.powerports.count() > 0 and device.poweroutlets.count() > 0:
                     self.log_success(device)
                 elif intcount == 0:
                     self.log_warning(device, "No interfaces assigned to device")

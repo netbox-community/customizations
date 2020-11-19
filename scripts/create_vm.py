@@ -42,7 +42,7 @@ class NewVM(Script):
     disk = IntegerVar(label="Disk (GB)", required=False)
     comments = TextVar(label="Comments", required=False)
 
-    def run(self, data):
+    def run(self, data, commit):
         vm = VirtualMachine(
             name=data["vm_name"],
             role=data["role"],

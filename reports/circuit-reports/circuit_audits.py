@@ -2,7 +2,6 @@ import datetime
 
 from circuits.models import Circuit
 from circuits.choices import CircuitStatusChoices
-from extras.models import CustomFieldValue
 from extras.reports import Report
 
 
@@ -27,89 +26,61 @@ class StatusDates(Report):
             status=CircuitStatusChoices.STATUS_DEPROVISIONING
         )
 
-        deprovision_dates = CustomFieldValue.objects.filter(
-            field__name="deprovision_date", obj_id__in=deprovisioned_circuits
-        )
-
-        # Get list of PKs for deprovisioned circuits to compare with
-        # the custom field data later
-        deprovisioned_pks = deprovisioned_circuits.values_list("pk", flat=True)
-
         today = datetime.datetime.utcnow().date()
         one_month_ago = today - datetime.timedelta(hours=MONTHS_IN_HOURS_1)
         three_months_ago = today - datetime.timedelta(hours=MONTHS_IN_HOURS_3)
 
-        circuits_w_dates = []
-        for circuit in deprovision_dates:
+        for circuit_obj in deprovisioned_circuits:
 
-            circuit_obj = circuit.obj
-            circuits_w_dates.append(circuit_obj.id)
+            deprovision_date = circuit_obj.cf.get("deprovision_date")
 
-            if not circuit.value:
+            if not deprovision_date:
                 self.log_failure(circuit_obj, "No deprovisioned date defined.")
 
-            elif circuit.value < three_months_ago:  # older than 3 months
+            elif deprovision_date < three_months_ago:  # older than 3 months
                 self.log_failure(
                     circuit_obj,
                     "Deprovisioned 3+ months ago ({}), time to decommission (non-billing)!".format(
-                        circuit.value
+                        deprovision_date
                     ),
                 )
 
-            elif circuit.value < one_month_ago:  # older than 1 month
+            elif deprovision_date < one_month_ago:  # older than 1 month
                 self.log_warning(
-                    circuit_obj, "Deprovisioned 1 month ago ({})".format(circuit.value)
+                    circuit_obj, "Deprovisioned 1 month ago ({})".format(deprovision_date)
                 )
 
             else:
                 self.log_success(circuit_obj)
-
-        for missing in set(deprovisioned_pks) - set(circuits_w_dates):
-            circuit_obj = Circuit.objects.get(pk=missing)
-            self.log_failure(circuit_obj, "No deprovisioned date defined.")
 
     def test_check_decommissioned(self):
 
         decommed_circuits = Circuit.objects.filter(status=CircuitStatusChoices.STATUS_DECOMMISSIONED)
 
-        decomm_dates = CustomFieldValue.objects.filter(
-            field__name="decomm_date", obj_id__in=decommed_circuits
-        )
-
-        # Get list of PKs for decommed circuits to compare with
-        # the custom field data later
-        decommed_pks = decommed_circuits.values_list("pk", flat=True)
-
         today = datetime.datetime.utcnow().date()
         six_months_ago = today - datetime.timedelta(hours=MONTHS_IN_HOURS_6)
         three_weeks_left = six_months_ago + datetime.timedelta(hours=WEEKS_IN_HOURS_3)
 
-        circuits_w_dates = []
-        for circuit in decomm_dates:
+        for circuit_obj in decommed_circuits:
 
-            circuit_obj = circuit.obj
-            circuits_w_dates.append(circuit_obj.id)
+            decomm_date = circuit_obj.cf.get("decomm_date")
 
-            if not circuit.value:
+            if not decomm_date:
                 self.log_failure(circuit_obj, "No decommissioned date defined.")
 
-            elif circuit.value < six_months_ago:  # older than 6 months
+            elif decomm_date < six_months_ago:  # older than 6 months
                 self.log_warning(
                     circuit_obj,
-                    "Circuit ready for deletion, Decommed on {}".format(circuit.value),
+                    "Circuit ready for deletion, Decommed on {}".format(decomm_date),
                 )
 
-            elif circuit.value < three_weeks_left:  # 3 weeks til 6 months old
+            elif decomm_date < three_weeks_left:  # 3 weeks til 6 months old
                 self.log_info(
                     circuit_obj,
                     "3 or less weeks until eligible for deletion, Decommed on {}".format(
-                        circuit.value
+                        decomm_date
                     ),
                 )
 
             else:
                 self.log_success(circuit_obj)
-
-        for missing in set(decommed_pks) - set(circuits_w_dates):
-            circuit_obj = Circuit.objects.get(pk=missing)
-            self.log_failure(circuit_obj, "No decommissioned date defined.")

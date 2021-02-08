@@ -1,3 +1,8 @@
+#
+# NOTE:
+#  This script works with Netbox v2.9.  It does not work with v2.10 in its current state.
+#
+
 #Requires -Version 5
 <#
 .SYNOPSIS

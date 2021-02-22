@@ -1,4 +1,5 @@
 # Make sure to install the dnspython module for this to work (pip3 install dnspython)
+# Add `dnspython` to your `local-requirements.txt` to make sure it is included during updates.
 
 from dcim.choices import DeviceStatusChoices
 from dcim.models import Device

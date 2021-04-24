@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 """
-NetBox 2.10 custom script to create a network segment on a Firewall.
+NetBox 2.11 custom script to create a network segment on a Firewall.
 
 The script assumes the following exists:
 
@@ -34,11 +34,13 @@ Bugs:
 
 from django.db.utils import IntegrityError
 from django.db import transaction
+from django.contrib.contenttypes.models import ContentType
 
 from dcim.models import Site, Device, Interface
 from dcim.choices import InterfaceTypeChoices, InterfaceModeChoices
 from ipam.models import Role, VLANGroup, VLAN, Prefix, IPAddress
 from ipam.choices import PrefixStatusChoices
+from virtualization.models import VirtualMachine, VMInterface
 from extras.scripts import Script, ObjectVar, StringVar, IntegerVar, ChoiceVar
 
 
@@ -46,11 +48,20 @@ class NewNetworkSegment(Script):
     class Meta:
         name = "New segment"
         description = "Create a new network segment."
-        commit_default = True
+        commit_default = False
 
     site = ObjectVar(
         model=Site,
     )
+    # Derived from other user input in _get_site_prefix_container().
+    #  prefix_container = ObjectVar(
+    #      model=Prefix,
+    #      query_params={
+    #          'status': 'container',
+    #          'site_id': '$site',
+    #      },
+    #      required=False,
+    #  )
     firewall = ObjectVar(
         model=Device,
         query_params={
@@ -58,6 +69,16 @@ class NewNetworkSegment(Script):
             'role': 'firewall',
             'site_id': '$site',
         },
+        required=False,
+    )
+    firewall2 = ObjectVar(
+        model=VirtualMachine,
+        query_params={
+            'status': 'active',
+            'role': 'firewall',
+            'site_id': '$site',
+        },
+        required=False,
     )
     interface = ObjectVar(
         model=Interface,
@@ -65,6 +86,14 @@ class NewNetworkSegment(Script):
             'type__n': 'virtual',
             'device_id': '$firewall',
         },
+        required=False,
+    )
+    interface2 = ObjectVar(
+        model=VMInterface,
+        query_params={
+            'virtual_machine_id': '$firewall2',
+        },
+        required=False,
     )
     vlan_name = StringVar(
         label="VLAN Name",
@@ -105,11 +134,30 @@ class NewNetworkSegment(Script):
             new_prefix,
         )
 
+        if data['firewall'] is not None:
+            firewall = data['firewall']
+        elif data['firewall2'] is not None:
+            firewall = data['firewall2']
+        else:
+            return
+
+        if data['interface'] is not None:
+            interface = data['interface']
+        elif data['interface2'] is not None:
+            interface = data['interface2']
+        else:
+            return
+
         if data['interface_mode'] == 'tagged':
-            new_interface_name = f"{data['interface'].name}.{new_vlan.vid}"
+            #  self.log_info(firewall)
+            if firewall.platform.slug in ['opnsense', 'pfsense']:
+                new_interface_name = f"{interface.name}_vlan{new_vlan.vid}"
+            else:
+                new_interface_name = f"{interface.name}.{new_vlan.vid}"
             new_interface = Interface(
                 name=new_interface_name,
-                device=data['firewall'],
+                parent=interface,
+                device=firewall,
                 type=InterfaceTypeChoices.TYPE_VIRTUAL,
                 mode=InterfaceModeChoices.MODE_TAGGED,
             )
@@ -122,11 +170,11 @@ class NewNetworkSegment(Script):
                 self.log_success(f"Created Interface: {new_interface}")
 
             new_interface = Interface.objects.get(
-                device=data['firewall'],
+                device=firewall,
                 name=new_interface_name,
             )
         else:
-            new_interface = data['interface']
+            new_interface = interface
 
         if data['interface_mode'] == 'tagged':
             if new_interface.mode != InterfaceModeChoices.MODE_TAGGED:
@@ -246,12 +294,20 @@ class NewNetworkSegment(Script):
             status=PrefixStatusChoices.STATUS_CONTAINER,
         )
         if site_prefix_container.count() != 1:
-            raise Exception(f"{site_prefix_container.count()} prefix containers exist for this site. Expected 1.")
+            if data['prefix_vlan_role'] is not None:
+                site_prefix_container = Prefix.objects.filter(
+                    role__name=data['prefix_vlan_role'],
+                    site=data['site'],
+                    status=PrefixStatusChoices.STATUS_CONTAINER,
+                )
+            if site_prefix_container.count() != 1:
+                raise Exception(f"{site_prefix_container.count()} prefix containers exist for this site. Expected 1.")
         return site_prefix_container[0]
 
     def _get_vlan_group(self, data):
         site_vlan_group = VLANGroup.objects.filter(
-            site=data['site'],
+            scope_type=ContentType.objects.get_by_natural_key('dcim', 'site'),
+            scope_id=data['site'].id,
         )
         if site_vlan_group.count() != 1:
             raise Exception(f"{site_vlan_group.count()} prefix containers exist for this site. Expected 1.")

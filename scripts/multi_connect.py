@@ -8,20 +8,24 @@ from django.db import transaction
 from extras.models import Tag
 from extras.scripts import Script, ChoiceVar, ObjectVar, StringVar, IntegerVar, MultiObjectVar
 import re
+from netbox.settings import VERSION
 from tenancy.models import Tenant
 from utilities.choices import ColorChoices
 from utilities.forms.constants import ALPHANUMERIC_EXPANSION_PATTERN
 from utilities.forms.utils import expand_alphanumeric_pattern
 
+NO_CHOICE = ()
 # https://github.com/netbox-community/netbox/issues/8228
-NO_CHOICE = (
+# Only apply to Netbox < v3.1.5
+if [int(n) for n in VERSION.split('-')[0].split('.')] < [3, 1, 5]:
+    NO_CHOICE = (
         ('', '---------'),
-)
+    )
 
 TERM_CHOICES = (
-        ('interfaces', 'Interfaces'),
-        ('frontports', 'Front Ports'),
-        ('rearports', 'Rear Ports'),
+    ('interfaces', 'Interfaces'),
+    ('frontports', 'Front Ports'),
+    ('rearports', 'Rear Ports'),
 )
 
 def expand_pattern(value):

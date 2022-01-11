@@ -48,6 +48,7 @@ def update_site(script, site, overwrite=False):
                 script.log_success(f'{site.name} geolocation found: {round(g.y,6)}, {round(g.x,6)}')
                 site.latitude = round(g.y,6)
                 site.longitude = round(g.x,6)
+                site.full_clean()
                 site.save()
             else:
                 script.log_failure(f'{site.name} no geolocation found for {site.physical_address}')

@@ -103,7 +103,7 @@ class MultiConnect(Script):
             )
             try:
                 with transaction.atomic():
-                    cable.clean()
+                    cable.full_clean()
                     cable.save()
             except Exception as e:
                 self.log_failure(f'Unable to connect {device_a.name}:{terms_a[i]} to {device_b.name}:{terms_b[i]}: {e}')

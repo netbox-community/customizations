@@ -21,7 +21,7 @@ class NewVM(Script):
         name = "New VM"
         description = "Create a new VM"
         field_order = ['vm_name', 'dns_name', 'primary_ip4', 'primary_ip6', #'vrf',
-                       'role', 'status', 'cluster', #'tenant',
+                       'role', 'status', 'cluster', 'tenant',
                        'platform', 'interface_name', 'mac_address',
                        'vcpus', 'memory', 'disk', 'comments']
 
@@ -55,6 +55,7 @@ class NewVM(Script):
             comments=data["comments"],
             tenant=data.get("tenant"),
         )
+        vm.full_clean()
         vm.save()
 
         vminterface = VMInterface(
@@ -62,6 +63,7 @@ class NewVM(Script):
             mac_address=data["mac_address"],
             virtual_machine=vm,
         )
+        vminterface.full_clean()
         vminterface.save()
 
         def add_addr(addr, expect_family):
@@ -87,11 +89,13 @@ class NewVM(Script):
                 raise RuntimeError("Address %s is already assigned" % addr)
             a.assigned_object = vminterface
             a.tenant = data.get("tenant")
+            a.full_clean()
             a.save()
             self.log_info("%s IP address %s %s" % (result, a.address, a.vrf or ""))
             setattr(vm, "primary_ip%d" % a.family, a)
 
         add_addr(data["primary_ip4"], 4)
         add_addr(data["primary_ip6"], 6)
+        vm.full_clean()
         vm.save()
         self.log_success("Created VM %s" % vm.name)

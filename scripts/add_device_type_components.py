@@ -39,7 +39,7 @@ class AddDeviceTypeComponents(Script):
                     if x.name not in names
                 ]
                 if items:
-                    for item in items:
-                        item.full_clean()
+                    for i in items:
+                        i.full_clean()
                     klass.objects.bulk_create(items)
                     self.log_success("%s (%d): created %d %s" % (device.name, device.id, len(items), item))

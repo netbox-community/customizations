@@ -4,6 +4,7 @@ from extras.reports import Report
 
 # This sample looks for a custom field named "Monitor" and then acts from there
 
+
 class Check_IfMonitored(Report):
     description = "Check if device is flagged to be monitored"
 

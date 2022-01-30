@@ -1,6 +1,7 @@
-from ipam.choices import IPAddressRoleChoices
-from ipam.models import IPAddress, Prefix
 from extras.reports import Report
+from ipam.choices import IPAddressRoleChoices
+from ipam.models import IPAddress
+from ipam.models import Prefix
 
 LOOPBACK_ROLES = [
     IPAddressRoleChoices.ROLE_LOOPBACK,
@@ -15,7 +16,9 @@ class CheckPrefixLength(Report):
 
     def test_prefix_lengths(self):
         prefixes = list(Prefix.objects.all())
-        prefixes.sort(key=lambda k: k.prefix)   # overlapping subnets sort in order from largest to smallest
+        prefixes.sort(
+            key=lambda k: k.prefix
+        )  # overlapping subnets sort in order from largest to smallest
         for ipaddr in IPAddress.objects.all():
             a = ipaddr.address
             if str(a).startswith("fe80"):
@@ -25,9 +28,13 @@ class CheckPrefixLength(Report):
             if ipaddr.role in LOOPBACK_ROLES and a.size == 1:
                 self.log_success(ipaddr)
                 continue
-            parents = [p for p in prefixes if
-                              (p.vrf and p.vrf.id) == (ipaddr.vrf and ipaddr.vrf.id) and
-                               p.prefix.version == a.version and a.ip in p.prefix]
+            parents = [
+                p
+                for p in prefixes
+                if (p.vrf and p.vrf.id) == (ipaddr.vrf and ipaddr.vrf.id)
+                and p.prefix.version == a.version
+                and a.ip in p.prefix
+            ]
             if not parents:
                 self.log_info(ipaddr, "No parent prefix")
                 continue
@@ -37,18 +44,27 @@ class CheckPrefixLength(Report):
                 self.log_success(ipaddr)
                 continue
             if a.prefixlen != parent.prefix.prefixlen:
-                self.log_failure(ipaddr, "prefixlen (%d) inconsistent with parent prefix (%s)" %
-                                 (a.prefixlen, str(parent.prefix)))
+                self.log_failure(
+                    ipaddr,
+                    "prefixlen (%d) inconsistent with parent prefix (%s)"
+                    % (a.prefixlen, str(parent.prefix)),
+                )
                 continue
             # if the parent prefix also contains child prefixes, that probably means that
             # an intermediate parent prefix is missing
-            pchildren = [p for p in prefixes if
-                                (p.vrf and p.vrf.id) == (parent.vrf and parent.vrf.id) and
-                                 p.prefix.version == parent.prefix.version and
-                                 p.prefix != parent.prefix and
-                                 p.prefix in parent.prefix]
+            pchildren = [
+                p
+                for p in prefixes
+                if (p.vrf and p.vrf.id) == (parent.vrf and parent.vrf.id)
+                and p.prefix.version == parent.prefix.version
+                and p.prefix != parent.prefix
+                and p.prefix in parent.prefix
+            ]
             if pchildren:
-                self.log_warning(ipaddr, "parent prefix (%s) contains %d other child prefix(es)" %
-                                 (str(parent.prefix), len(pchildren)))
+                self.log_warning(
+                    ipaddr,
+                    "parent prefix (%s) contains %d other child prefix(es)"
+                    % (str(parent.prefix), len(pchildren)),
+                )
                 continue
             self.log_success(ipaddr)

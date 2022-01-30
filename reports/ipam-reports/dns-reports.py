@@ -1,10 +1,12 @@
 # Make sure to install the dnspython module for this to work (pip3 install dnspython)
 # Add `dnspython` to your `local-requirements.txt` to make sure it is included during updates.
+import socket
 
+import dns.resolver
 from dcim.choices import DeviceStatusChoices
 from dcim.models import Device
 from extras.reports import Report
-import socket, dns.resolver
+
 
 class Check_DNS_A_Record(Report):
     description = "Check if device's primary IPv4 has DNS records"
@@ -23,7 +25,7 @@ class Check_DNS_A_Record(Report):
                     if addr == ip4:
                         self.log_success(device)
                     else:
-                        self.log_failure(device,"DNS: " + addr + " - Netbox: " + ip4)
+                        self.log_failure(device, "DNS: " + addr + " - Netbox: " + ip4)
                 except socket.gaierror as err:
                     self.log_info(device, "No DNS Resolution")
             else:
@@ -32,6 +34,7 @@ class Check_DNS_A_Record(Report):
                     self.log_warning(device, "No IPv4 set.  Could be: " + addr)
                 except socket.gaierror as err:
                     self.log_info(device, "No IP or DNS found.")
+
 
 class Check_DNS_AAAA_Record(Report):
     description = "Check if device's primary IPv6 has DNS records"
@@ -51,7 +54,7 @@ class Check_DNS_AAAA_Record(Report):
                     if addr == ip6:
                         self.log_success(device)
                     else:
-                        self.log_failure(device,"DNS: " + addr + " - Netbox: " + ip6)
+                        self.log_failure(device, "DNS: " + addr + " - Netbox: " + ip6)
                 except dns.resolver.NoAnswer:
                     self.log_info(device, "No AAAA Record")
                 except dns.resolver.NXDOMAIN:

@@ -7,41 +7,13 @@ body:
   - type: markdown
     attributes:
       value: >
-        **NOTE:** This form is only for reporting _reproducible bugs_ in a current NetBox Collection
-        installation. 
-        
-        - See the latest ansible module documentation:
-          https://netbox-ansible-collection.readthedocs.io
-        - Check the release notes:
-          https://github.com/netbox-community/ansible_modules/releases
+        **NOTE:** This form is only for reporting _reproducible bugs_ in a current NetBox Script or Report.
+
         - Look through the issues already resolved:
-          https://github.com/netbox-community/ansible_modules/issues?q=is%3Aclosed
-        - Post to Github Discussions if you need setup or usage help that is not a bug:
-          https://github.com/netbox-community/ansible_modules/discussions
-        - Join the `#ansible` channel on our Slack:
-          https://join.slack.com/t/netdev-community/shared_invite/zt-mtts8g0n-Sm6Wutn62q_M4OdsaIycrQ
+          https://github.com/netbox-community/reports/issues?q=is%3Aclosed
+        - Join the `#netbox` channel on our Slack:
+          https://netdev.chat
 
-  - type: input
-    attributes:
-      label: Ansible NetBox Collection version
-      description: What version of the Ansible NetBox Collection are you currently running?
-      placeholder: v3.5.1
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Ansible version
-      description: >
-        What version of the Ansible NetBox Collection are you currently running?
-        Paste the output of "ansible --version" 
-      value: >
-        ```bash
-
-        <!--- Paste verbatim output from "ansible --version" between quotes -->
-
-        ```
-    validations:
-      required: true
   - type: input
     attributes:
       label: NetBox version

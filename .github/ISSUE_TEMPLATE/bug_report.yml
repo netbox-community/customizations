@@ -16,15 +16,15 @@ body:
 
   - type: input
     attributes:
-      label: NetBox version
-      description: What version of NetBox are you currently running?
-      placeholder: v3.1.6
+      label: Script name
+      description: What script or report are you having issues with?
     validations:
       required: true
   - type: input
     attributes:
-      label: Script name
-      description: What script or report are you having issues with?
+      label: NetBox version
+      description: What version of NetBox are you currently running?
+      placeholder: v3.1.6
     validations:
       required: true
   - type: dropdown

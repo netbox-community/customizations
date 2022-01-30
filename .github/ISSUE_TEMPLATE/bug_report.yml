@@ -43,9 +43,11 @@ body:
       description: >
         Describe in detail the exact steps that someone else can take to
         reproduce this bug using the current stable release of the Ansible NetBox collection.
-        Include any sanatized playbooks, variables, & tasks specifically showing just the issue.
-      #placeholder: |
-
+      placeholder: |
+        1. In this environment...
+        2. With this input...
+        3. Run '...'
+        4. See error...
     validations:
       required: true
   - type: textarea

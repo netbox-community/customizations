@@ -21,6 +21,12 @@ body:
       placeholder: v3.1.6
     validations:
       required: true
+  - type: input
+    attributes:
+      label: Script name
+      description: What script or report are you having issues with?
+    validations:
+      required: true
   - type: dropdown
     attributes:
       label: Python version

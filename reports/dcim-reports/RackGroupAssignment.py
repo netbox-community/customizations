@@ -1,8 +1,11 @@
-from dcim.models import Rack, RackGroup
+from dcim.models import Rack
+from dcim.models import RackGroup
 from extras.reports import Report
+
 
 class RackGroupAssignmentReport(Report):
     description = "Verify each rack is assigned to a Rack Group"
+
     def test_rack_group_assignment(self):
         for rack in Rack.objects.all():
             if rack.group_id is not None:

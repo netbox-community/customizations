@@ -1,7 +1,7 @@
-from django.db.models import Count, Q
-
 from dcim.choices import SiteStatusChoices
 from dcim.models import Site
+from django.db.models import Count
+from django.db.models import Q
 from extras.reports import Report
 
 

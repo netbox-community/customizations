@@ -1,7 +1,7 @@
 import datetime
 
-from circuits.models import Circuit
 from circuits.choices import CircuitStatusChoices
+from circuits.models import Circuit
 from extras.reports import Report
 
 
@@ -47,7 +47,8 @@ class StatusDates(Report):
 
             elif deprovision_date < one_month_ago:  # older than 1 month
                 self.log_warning(
-                    circuit_obj, "Deprovisioned 1 month ago ({})".format(deprovision_date)
+                    circuit_obj,
+                    "Deprovisioned 1 month ago ({})".format(deprovision_date),
                 )
 
             else:
@@ -55,7 +56,9 @@ class StatusDates(Report):
 
     def test_check_decommissioned(self):
 
-        decommed_circuits = Circuit.objects.filter(status=CircuitStatusChoices.STATUS_DECOMMISSIONED)
+        decommed_circuits = Circuit.objects.filter(
+            status=CircuitStatusChoices.STATUS_DECOMMISSIONED
+        )
 
         today = datetime.datetime.utcnow().date()
         six_months_ago = today - datetime.timedelta(hours=MONTHS_IN_HOURS_6)

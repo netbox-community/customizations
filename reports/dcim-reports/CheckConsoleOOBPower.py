@@ -1,9 +1,12 @@
 from dcim.choices import DeviceStatusChoices
-from dcim.models import ConsolePort, Device, PowerPort
+from dcim.models import ConsolePort
+from dcim.models import Device
+from dcim.models import PowerPort
 from extras.reports import Report
 
 # This sample checks that every live device has a console connection, an out-of-band management connection, and two power connections
 # This sample is pulled directly from the example used at https://netbox.readthedocs.io/en/stable/additional-features/reports/
+
 
 class DeviceConnectionsReport(Report):
     description = "Validate the minimum physical connections for each device"
@@ -12,16 +15,20 @@ class DeviceConnectionsReport(Report):
 
         # Check that every console port for every active device has a connection defined.
         active = DeviceStatusChoices.STATUS_ACTIVE
-        for console_port in ConsolePort.objects.prefetch_related('device').filter(device__status=active):
+        for console_port in ConsolePort.objects.prefetch_related("device").filter(
+            device__status=active
+        ):
             if console_port.connected_endpoint is None:
                 self.log_failure(
                     console_port.device,
-                    "No console connection defined for {}".format(console_port.name)
+                    "No console connection defined for {}".format(console_port.name),
                 )
             elif not console_port.connection_status:
                 self.log_warning(
                     console_port.device,
-                    "Console connection for {} marked as planned".format(console_port.name)
+                    "Console connection for {} marked as planned".format(
+                        console_port.name
+                    ),
                 )
             else:
                 self.log_success(console_port.device)
@@ -37,12 +44,16 @@ class DeviceConnectionsReport(Report):
                     if not power_port.connection_status:
                         self.log_warning(
                             device,
-                            "Power connection for {} marked as planned".format(power_port.name)
+                            "Power connection for {} marked as planned".format(
+                                power_port.name
+                            ),
                         )
             if connected_ports < 2:
                 self.log_failure(
                     device,
-                    "{} connected power supplies found (2 needed)".format(connected_ports)
+                    "{} connected power supplies found (2 needed)".format(
+                        connected_ports
+                    ),
                 )
             else:
                 self.log_success(device)

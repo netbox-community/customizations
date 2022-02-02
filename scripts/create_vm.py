@@ -9,26 +9,26 @@ https://github.com/netbox-community/netbox/issues/648
 
 from dcim.models import DeviceRole, Platform
 from django.core.exceptions import ObjectDoesNotExist
+from extras.models import Tag
 from ipam.choices import IPAddressStatusChoices
 from ipam.models import IPAddress, VRF
 from tenancy.models import Tenant
 from virtualization.choices import VirtualMachineStatusChoices
 from virtualization.models import Cluster, VirtualMachine, VMInterface
-from extras.scripts import Script, StringVar, IPAddressWithMaskVar, ObjectVar, ChoiceVar, IntegerVar, TextVar
+from extras.scripts import Script, StringVar, IPAddressWithMaskVar, ObjectVar, MultiObjectVar, ChoiceVar, IntegerVar, TextVar
 
 class NewVM(Script):
     class Meta:
         name = "New VM"
         description = "Create a new VM"
-        field_order = ['vm_name', 'dns_name', 'primary_ip4', 'primary_ip6', #'vrf',
-                       'role', 'status', 'cluster', 'tenant',
-                       'platform', 'interface_name', 'mac_address',
-                       'vcpus', 'memory', 'disk', 'comments']
 
     vm_name = StringVar(label="VM name")
     dns_name = StringVar(label="DNS name", required=False)
+    vm_tags = MultiObjectVar(model=Tag, label="VM tags", required=False)
     primary_ip4 = IPAddressWithMaskVar(label="IPv4 address")
+    #primary_ip4_tags = MultiObjectVar(model=Tag, label="IPv4 tags", required=False)
     primary_ip6 = IPAddressWithMaskVar(label="IPv6 address", required=False)
+    #primary_ip6_tags = MultiObjectVar(model=Tag, label="IPv6 tags", required=False)
     #vrf = ObjectVar(model=VRF, required=False)
     role = ObjectVar(model=DeviceRole, query_params=dict(vm_role=True), required=False)
     status = ChoiceVar(VirtualMachineStatusChoices, default=VirtualMachineStatusChoices.STATUS_ACTIVE)
@@ -57,6 +57,7 @@ class NewVM(Script):
         )
         vm.full_clean()
         vm.save()
+        vm.tags.set(data["vm_tags"])
 
         vminterface = VMInterface(
             name=data["interface_name"],
@@ -66,11 +67,11 @@ class NewVM(Script):
         vminterface.full_clean()
         vminterface.save()
 
-        def add_addr(addr, expect_family):
+        def add_addr(addr, family):
             if not addr:
                 return
-            if addr.version != expect_family:
-                raise RuntimeError("Wrong family for %r" % a)
+            if addr.version != family:
+                raise RuntimeError(f"Wrong family for {a}")
             try:
                 a = IPAddress.objects.get(
                     address=addr,
@@ -86,16 +87,17 @@ class NewVM(Script):
             a.status = IPAddressStatusChoices.STATUS_ACTIVE
             a.dns_name = data["dns_name"]
             if a.assigned_object:
-                raise RuntimeError("Address %s is already assigned" % addr)
+                raise RuntimeError(f"Address {addr} is already assigned")
             a.assigned_object = vminterface
             a.tenant = data.get("tenant")
             a.full_clean()
             a.save()
-            self.log_info("%s IP address %s %s" % (result, a.address, a.vrf or ""))
-            setattr(vm, "primary_ip%d" % a.family, a)
+            #a.tags.set(data[f"primary_ip{family}_tags"])
+            self.log_info(f"{result} IP address {a.address} {a.vrf or ''}")
+            setattr(vm, f"primary_ip{family}", a)
 
         add_addr(data["primary_ip4"], 4)
         add_addr(data["primary_ip6"], 6)
         vm.full_clean()
         vm.save()
-        self.log_success("Created VM %s" % vm.name)
+        self.log_success(f"Created VM [{vm.name}](/virtualization/virtual-machines/{vm.id}/)")

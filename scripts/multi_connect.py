@@ -39,13 +39,6 @@ class MultiConnect(Script):
     class Meta:
         name = "Multi Connect"
         description = "Add multiple connections from one device to another"
-        field_order = [
-                'device_a', 'termination_type_a', 'termination_name_a',
-                'device_b', 'termination_type_b', 'termination_name_b',
-                'cable_status', 'cable_type', 'cable_tenant',
-                'cable_label', 'cable_color', 'cable_length', 'cable_length_unit'
-                'cable_tags',
-        ]
 
     device_a = ObjectVar(model=Device, label="Device A")
     termination_type_a = ChoiceVar(choices=TERM_CHOICES, label="Device A port type")
@@ -99,12 +92,12 @@ class MultiConnect(Script):
                 color=data["cable_color"],
                 length=data["cable_length"],
                 length_unit=data["cable_length_unit"],
-                tags=data["cable_tags"],
             )
             try:
                 with transaction.atomic():
                     cable.full_clean()
                     cable.save()
+                    cable.tags.set(data["cable_tags"])
             except Exception as e:
                 self.log_failure(f'Unable to connect {device_a.name}:{terms_a[i]} to {device_b.name}:{terms_b[i]}: {e}')
                 continue

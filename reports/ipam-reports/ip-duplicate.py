@@ -10,7 +10,7 @@ class UniqueIPReport(Report):
     def test_unique_ip(self):
         already_found = []
         for ip in IPAddress.objects.exclude(Q(role=IPAddressRoleChoices.ROLE_ANYCAST) | Q(role=IPAddressRoleChoices.ROLE_VIP) | Q(role=IPAddressRoleChoices.ROLE_VRRP)):
-            if ip.address in already_found:
+            if str(ip.address) in already_found:
                continue
             elif not ip.interface:
                 continue
@@ -20,7 +20,7 @@ class UniqueIPReport(Report):
                 if duplicate.interface:
                     real_dup +=1
             if real_dup != 0:
-                already_found.append(ip.address)
+                already_found.append(str(ip.address))
                 msg = "has %s duplicate ips" % real_dup
                 self.log_failure( ip, msg )
 

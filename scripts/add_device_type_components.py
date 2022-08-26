@@ -41,7 +41,7 @@ class AddDeviceTypeComponents(Script):
                 names = {i.name for i in getattr(device, item).all()}
                 templates = getattr(dt, templateitem).all()
                 items = [
-                    x.instantiate(device)
+                    x.instantiate(device=device)
                     for x in templates
                     if x.name not in names
                 ]

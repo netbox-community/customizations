@@ -14,10 +14,12 @@ from utilities.choices import ColorChoices
 from utilities.forms.constants import ALPHANUMERIC_EXPANSION_PATTERN
 from utilities.forms.utils import expand_alphanumeric_pattern
 
+NB_VERSION = [int(n) for n in VERSION.split('-')[0].split('.')]
+
 NO_CHOICE = ()
 # https://github.com/netbox-community/netbox/issues/8228
 # Only apply to Netbox < v3.1.5
-if [int(n) for n in VERSION.split('-')[0].split('.')] < [3, 1, 5]:
+if NB_VERSION < [3, 1, 5]:
     NO_CHOICE = (
         ('', '---------'),
     )
@@ -48,13 +50,13 @@ class MultiConnect(Script):
     termination_type_b = ChoiceVar(choices=TERM_CHOICES, label="Device B port type")
     termination_name_b = StringVar(label="Device B port name pattern", description="Example: ge-0/0/[5,7,12-23]")
 
-    cable_status = ChoiceVar(choices=LinkStatusChoices.CHOICES, default=LinkStatusChoices.STATUS_CONNECTED, label="Cable Status")
-    cable_type = ChoiceVar(choices=NO_CHOICE+CableTypeChoices.CHOICES, required=False, label="Cable Type")
+    cable_status = ChoiceVar(choices=LinkStatusChoices, default=LinkStatusChoices.STATUS_CONNECTED, label="Cable Status")
+    cable_type = ChoiceVar(choices=NO_CHOICE+tuple(CableTypeChoices), required=False, label="Cable Type")
     cable_tenant = ObjectVar(model=Tenant, required=False, label="Cable Tenant")
     cable_label = StringVar(label="Cable Label pattern", required=False)
-    cable_color = ChoiceVar(choices=NO_CHOICE+ColorChoices.CHOICES, required=False, label="Cable Color")
+    cable_color = ChoiceVar(choices=NO_CHOICE+tuple(ColorChoices), required=False, label="Cable Color")
     cable_length = IntegerVar(required=False, label="Cable Length") # unfortunately there is no DecimalVar
-    cable_length_unit = ChoiceVar(choices=NO_CHOICE+CableLengthUnitChoices.CHOICES, required=False, label="Cable Length Unit")
+    cable_length_unit = ChoiceVar(choices=NO_CHOICE+tuple(CableLengthUnitChoices), required=False, label="Cable Length Unit")
     cable_tags = MultiObjectVar(model=Tag, required=False, label="Cable Tags")
 
     def run(self, data, commit):
@@ -82,9 +84,7 @@ class MultiConnect(Script):
             if len(term_b) != 1:
                 self.log_failure(f'Unable to find "{terms_b[i]}" in {data["termination_type_b"]} on device B ({device_b.name})')
                 continue
-            cable = Cable(
-                termination_a=term_a[0],
-                termination_b=term_b[0],
+            cable_args = dict(
                 type=data["cable_type"],
                 status=data["cable_status"],
                 tenant=data["cable_tenant"],
@@ -93,6 +93,17 @@ class MultiConnect(Script):
                 length=data["cable_length"],
                 length_unit=data["cable_length_unit"],
             )
+            if NB_VERSION < [3, 3, 0]:
+                cable_args.update(dict(
+                    termination_a=term_a[0],
+                    termination_b=term_b[0],
+                ))
+            else:
+                cable_args.update(dict(
+                    a_terminations=term_a,
+                    b_terminations=term_b,
+                ))
+            cable = Cable(**cable_args)
             try:
                 with transaction.atomic():
                     cable.full_clean()

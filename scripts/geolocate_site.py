@@ -14,7 +14,7 @@ class SiteGeoAll(Script):
         description = 'Retrieve list of all sites and populate the latitude/longitude fields based on their physical address.'
         commit_default = True
     
-    region = ObjectVar(model=Region, display_field=name)
+    region = ObjectVar(model=Region)
     overwrite = BooleanVar(default=False, label='Override existing value',
                            description='If location already exists, update the value.')
 
@@ -29,7 +29,7 @@ class SiteGeoOne(Script):
         description = 'Populate the latitude/longitude fields for a specific site based on its physical address.'
         commit_default = True
 
-    location = ObjectVar(model=Site, display_field=name)
+    location = ObjectVar(model=Site)
     overwrite = BooleanVar(default=False, label='Override existing value',
                            description='If location already exists, update the value.')
 
@@ -46,9 +46,9 @@ def update_site(script, site, overwrite=False):
             g = geocoder.osm(site.physical_address)
             if g:
                 script.log_success(f'{site.name} geolocation found: {round(g.y,6)}, {round(g.x,6)}')
+                site.full_clean()
                 site.latitude = round(g.y,6)
                 site.longitude = round(g.x,6)
-                site.full_clean()
                 site.save()
             else:
                 script.log_failure(f'{site.name} no geolocation found for {site.physical_address}')

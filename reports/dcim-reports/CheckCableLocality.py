@@ -10,22 +10,32 @@ class CheckCableLocality(Report):
     description = "Warn on cables between racks, error on cables between sites"
 
     def test_cable_endpoints(self):
-        for cable in Cable.objects.prefetch_related('termination_a','termination_b').all():
-            if not getattr(cable.termination_a, 'device', None) or not getattr(cable.termination_b, 'device', None):
+        for cable in Cable.objects.prefetch_related('terminations').all():
+            devices = set()
+            term_types = set()
+            sites = set()
+            racks = set()
+            for t in cable.terminations.all():
+                device = getattr(t.termination, 'device', None)
+                if not device:
+                    continue
+                devices.add(device)
+                term_types.add(t.termination_type.name)
+                if device.site:
+                    sites.add(device.site)
+                if device.rack:
+                    racks.add(device.rack)
+
+            if len(sites) == 0:
                 continue
-            if cable.termination_a.device.site != cable.termination_b.device.site:
-                self.log_failure(cable, "Endpoints in different sites: {} ({}) and {} ({})".format(
-                    cable.termination_a.device, cable.termination_a.device.site,
-                    cable.termination_b.device, cable.termination_b.device.site,
-                ))
+            if len(sites) > 1:
+                self.log_failure(cable, f"Endpoints in different sites: {sites} {devices} {cable.type}")
                 continue
-            if isinstance(cable.termination_a, RearPort) and isinstance(cable.termination_b, RearPort):
+            # Rearport to rearport connections are expected to be in different racks
+            if len(term_types) == 1 and "rear port" in term_types:
                 self.log_success(cable)
                 continue
-            if cable.termination_a.device.rack != cable.termination_b.device.rack and cable.type not in CABLE_TYPES_OK_BETWEEN_RACKS:
-                self.log_warning(cable, "Endpoints in different racks: {} ({}) and {} ({})".format(
-                    cable.termination_a.device, cable.termination_a.device.rack,
-                    cable.termination_b.device, cable.termination_b.device.rack,
-                ))
+            if len(racks) > 1 and cable.type not in CABLE_TYPES_OK_BETWEEN_RACKS:
+                self.log_warning(cable, f"Endpoints in different racks: {racks} {devices} {cable.type}")
                 continue
             self.log_success(cable)

@@ -1,3 +1,5 @@
+# Useful report to flag devices with duplicated names (case sensitive) before trying to upgrade to NetBox 3.4 or new from a version of NetBox older than 3.4
+
 from dcim.models import Device, DeviceType, Site
 from extras.reports import Report
 

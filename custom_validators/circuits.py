@@ -1,5 +1,6 @@
 from django.db.models import Q
 
+from circuits.models import Circuit
 from extras.validators import CustomValidator
 
 
@@ -31,6 +32,13 @@ class CircuitInstallDateOnCreate(CustomValidator):
                 self.fail(
                     f"Date Installed must contain a valid date.", field="install_date"
                 )
+
+            # Alternative way to check install date, but incurs an additional query
+            # previous_state = Circuit.objects.get(circuit.pk)
+            # if previous_state.install_date:
+            #     self.fail(
+            #         f"Date Installed must contain a valid date.", field="install_date"
+            #     )
 
 
 class CircuitCommitRateValidator(CustomValidator):

@@ -11,5 +11,5 @@ Nothing in this repository comes with any explicit or implied warranty. For more
 ## Using Reports and Scripts
 See the Netbox documentation for:
 
-* [Reports](https://netbox.readthedocs.io/en/stable/additional-features/reports/)
-* [Custom scripts](https://netbox.readthedocs.io/en/stable/additional-features/custom-scripts/)
+* [Reports](https://docs.netbox.dev/en/stable/customization/reports/)
+* [Custom scripts](https://docs.netbox.dev/en/stable/customization/custom-scripts/)

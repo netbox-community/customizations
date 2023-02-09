@@ -1,0 +1,97 @@
+{%- if in_library_list %}
+[{{ in_library_list|count }}] Found in Netbox devicetype-library:
+{%- for i in in_library_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if not_in_library_list %}
+
+[{{ not_in_library_list|count }}] Not found in Netbox devicetype-library:
+{%- for i in not_in_library_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if imported_devicetype_list %}
+
+[{{ imported_devicetype_list|count }}] Imported devicetype object records:
+{%- for i in imported_devicetype_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if updated_devicetype_list %}
+
+[{{ updated_devicetype_list|count }}] Updated Existing devicetype object records:
+{%- for i in updated_devicetype_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if up_to_date_devicetype_list %}
+
+[{{ up_to_date_devicetype_list|count }}] Existing devicetype object records matching devicetype-library template:
+{%- for i in up_to_date_devicetype_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if updated_interfacetemplate_list %}
+
+[{{ updated_interfacetemplate_list|count }}] Updated interface template records:
+{%- for i in updated_interfacetemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if deleted_interfacetemplate_list %}
+
+[{{ deleted_interfacetemplate_list|count }}] Deleted interface template records:
+{%- for i in deleted_interfacetemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if imported_interfacetemplate_list %}
+
+[{{ imported_interfacetemplate_list|count }}] Imported interface template records:
+{%- for i in imported_interfacetemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if updated_consoleporttemplate_list %}
+
+[{{ updated_consoleporttemplate_list|count }}] Updated consoleport template records:
+{%- for i in updated_consoleporttemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if deleted_consoleporttemplate_list %}
+
+[{{ deleted_consoleporttemplate_list|count }}] Deleted consoleport template records:
+{%- for i in deleted_consoleporttemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if imported_consoleporttemplate_list %}
+
+[{{ imported_consoleporttemplate_list|count }}] Imported consoleport template records:
+{%- for i in imported_consoleporttemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if updated_powerporttemplate_list %}
+
+[{{ updated_powerporttemplate_list|count }}] Updated powerport template records:
+{%- for i in updated_powerporttemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if deleted_powerporttemplate_list %}
+
+[{{ deleted_powerporttemplate_list|count }}] Deleted powerport template records:
+{%- for i in deleted_powerporttemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}
+{%- if imported_powerporttemplate_list %}
+
+[{{ imported_powerporttemplate_list|count }}] Imported powerport template records:
+{%- for i in imported_powerporttemplate_list %}
+{{ i }}
+{%- endfor %}
+{%- endif %}

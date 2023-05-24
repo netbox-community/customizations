@@ -1,0 +1,17 @@
+{% for device in queryset %}
+^FX //This Zebra zpl label is optimized for 203dpi and 2x1 inch label size. All positional pararmeters are dpi-dependend.
+^XA
+^CI28^FX UTF-8!
+^CF0,25
+^FO175,20^FD{{device.name}}^FS
+^CF0,15
+^FO175,50^FDIP/DNS: ^FS
+^CF0,20
+^FX //If there is no name use IP
+^FO175,70^FD{% if device.primary_ip.dns_name != ''%}{{device.primary_ip.dns_name}}{%else%}{{device.primary_ip.flat}}{%endif%}^FS
+^CF0,15
+^FO175,155^FDID: {{device.id}}^FS
+^FX //Change the 15,10 (8 dots = 1mm on 203dpi) to position the label, change the 4 to change QR size
+^FO15,10^BQN,2,4^FDQA,https://demo.detbox.dev/dcim/devices/{{device.id}}/^FS
+^XZ
+{% endfor %}

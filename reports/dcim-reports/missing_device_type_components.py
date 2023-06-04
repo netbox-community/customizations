@@ -20,6 +20,7 @@ class MissingDeviceTypeComponents(Report):
                 ('rearports', 'rearporttemplates'),
                 ('frontports', 'frontporttemplates'),
                 ('devicebays', 'devicebaytemplates'),
+                ('modulebays', 'modulebaytemplates'),
             ]:
                 names = {i.name for i in getattr(device, item).all()}
                 templatenames = {i.name for i in getattr(dt, templateitem).all()}

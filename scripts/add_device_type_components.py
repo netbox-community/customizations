@@ -2,10 +2,11 @@
 This script adds missing components from the device type to selected device(s)
 """
 
-from dcim.models import (Device, ConsolePort, ConsoleServerPort, PowerPort,
+from dcim.models import (Manufacturer, DeviceType, Device,
+                         ConsolePort, ConsoleServerPort, PowerPort,
                          PowerOutlet, Interface, RearPort, FrontPort,
                          DeviceBay, ModuleBay)
-from extras.scripts import Script, MultiObjectVar
+from extras.scripts import Script, ObjectVar, MultiObjectVar
 
 
 class AddDeviceTypeComponents(Script):
@@ -13,8 +14,22 @@ class AddDeviceTypeComponents(Script):
         name = "Add Device Type Components"
         description = "Add missing components to selected devices"
 
+    manufacturer = ObjectVar(
+            model=Manufacturer,
+            required=False,
+    )
+    device_type = ObjectVar(
+        model=DeviceType,
+        query_params={
+            'manufacturer_id': '$manufacturer',
+        },
+        required=False,
+    )
     devices = MultiObjectVar(
         model=Device,
+        query_params={
+            'device_type_id': '$device_type',
+        },
     )
 
     def run(self, data, commit):

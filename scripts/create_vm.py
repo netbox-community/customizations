@@ -77,6 +77,7 @@ class NewVM(Script):
                     address=addr,
                     vrf=data.get("vrf"),
                 )
+                a.snapshot()
                 result = "Assigned"
             except ObjectDoesNotExist:
                 a = IPAddress(
@@ -96,6 +97,7 @@ class NewVM(Script):
             self.log_info(f"{result} IP address {a.address} {a.vrf or ''}")
             setattr(vm, f"primary_ip{family}", a)
 
+        vm.snapshot()
         add_addr(data["primary_ip4"], 4)
         add_addr(data["primary_ip6"], 6)
         vm.full_clean()

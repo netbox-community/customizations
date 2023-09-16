@@ -22,7 +22,7 @@
 
 from extras.scripts import *
 
-from dcim.models import Device, Rack
+from dcim.models import Device, Rack, RackReservation
 
 class ChangeManager:
     """
@@ -62,6 +62,12 @@ def flip_rack(rack, log_f=lambda s:None):
         with ChangeManager(device):
             log_f(f"Adding {device} to position {position}")
             device.position = position
+
+    # Deal with rack reservations
+    for reservation in RackReservation.objects.filter(rack=rack):
+        with ChangeManager(reservation):
+            reservation.units = sorted(rack.u_height - (unit - 1) for unit in reservation.units)
+            log_f(f"Updating reservation {reservation.pk} units to {repr(reservation.units)}")
 
 class RackFlipper(Script):
     class Meta:

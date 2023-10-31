@@ -1,0 +1,52 @@
+version: '2.4'
+
+services:
+  netbox_postgres:
+    # FIXME
+    image: docker.io/postgres:15-alpine
+    container_name: netbox_postgres_test
+    environment:
+      POSTGRES_USER: netbox
+      POSTGRES_PASSWORD: thaeGhu9iem+e
+      POSTGRES_DB: netbox
+    networks:
+      provision:
+        aliases:
+        - netboxpostgres
+
+  netbox:
+    build:
+      context: .
+    links:
+      - netbox_postgres
+    container_name: netbox_test
+    networks:
+      - provision
+    ports:
+      - ${NETBOX_PORT:-8080}:${NETBOX_PORT:-8080}
+    depends_on:
+      - netbox_postgres
+    entrypoint: bash /opt/netbox/docker-test.sh
+    environment:
+      DEBUG: "true"
+      PORT: ${NETBOX_PORT:-8080}
+      SUPERUSER_NAME: admin
+      SUPERUSER_EMAIL: admin@example.com
+      SUPERUSER_PASSWORD: admin
+      ALLOWED_HOSTS: localhost netbox
+      DB_NAME: netbox
+      DB_USER: netbox
+      DB_HOST: netboxpostgres
+      APP_ENV: dev
+      DB_PASSWORD: thaeGhu9iem+e
+      SECRET_KEY: crMAOw9S5oyRrQ2Xyszg_s5lL#8&!Uwtk-rB4eQpTGyHtyQwln
+    volumes:
+      - ./common/:/opt/netbox/netbox/scripts/common/:rw
+      - ./tests/:/opt/netbox/netbox/scripts/tests/:ro
+      - ./docker-test.sh:/opt/netbox/docker-test.sh
+      - ./fixtures/:/opt/fixtures/
+
+networks:
+  provision:
+    name: ${NETBOX_DOCKER_NETWORK:-provision}
+    driver: bridge

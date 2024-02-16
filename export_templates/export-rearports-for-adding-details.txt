@@ -1,0 +1,11 @@
+##Why? We use Label and description of rear ports to mark in where which room a port ends.
+##After adding the information it can be reimported again thanks to the recently added edit functionality.
+
+{%- for device in queryset %}
+##################################
+###Rearports of "{{device.name}}" @ Rack {{device.rack}} - {{device.location}} in {{device.site}}
+###Description: More Information (Wall/Floor mounted etc.),Label = Room Number
+id,name,description,label
+{%- for rearport in device.rearports.all() %}
+{{rearport.id}},{{rearport.name}},{{rearport.description}},{{rearport.label}}
+{%- endfor %}{%- endfor %}

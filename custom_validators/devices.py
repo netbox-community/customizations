@@ -13,7 +13,7 @@ class ActiveDeviceTenantValidator(CustomValidator):
 class DeviceCustomFieldsValidator(CustomValidator):
     def validate(self, instance):
         custom_field_name = "field_name"
-        if instance.status == "active" and instance.asset_tag:
+        if instance.status == "active":
             if not instance.cf[custom_field_name]:
                 self.fail(
                     f"Active device with an asset tags must have {custom_field_name} value set",

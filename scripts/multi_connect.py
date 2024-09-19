@@ -10,7 +10,10 @@ from extras.scripts import Script, ChoiceVar, ObjectVar, StringVar, IntegerVar, 
 import re
 from netbox.settings import VERSION
 from tenancy.models import Tenant
-from utilities.choices import ColorChoices
+try:
+    from netbox.choices import ColorChoices
+except ModuleNotFoundError:
+    from utilities.choices import ColorChoices
 from utilities.forms.constants import ALPHANUMERIC_EXPANSION_PATTERN
 from utilities.forms.utils import expand_alphanumeric_pattern
 

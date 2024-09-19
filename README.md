@@ -4,7 +4,7 @@ A collection of community submitted and maintained NetBox customizations includi
 * [NetBox Custom Validators](https://docs.netbox.dev/en/stable/customization/custom-validation/)
 * [NetBox Export Templates](https://docs.netbox.dev/en/stable/customization/export-templates/)
 * [NetBox Reports](https://docs.netbox.dev/en/stable/customization/reports/)
-* [NetBox Scripts](https://docs.netbox.dev/en/stable/customization/scripts/)
+* [NetBox Scripts](https://docs.netbox.dev/en/stable/customization/custom-scripts/)
 * Other external NetBox Scripts/Integrations - External scripts or tools that are executed independently from NetBox, but use NetBox as a source of truth as an input source and/or ouputsource via the API.
 
 ## Contributing

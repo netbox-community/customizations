@@ -63,7 +63,9 @@ class AddDeviceTypeComponents(Script):
                 if items:
                     for i in items:
                         i.full_clean()
-                    klass.objects.bulk_create(items)
+                        # save() also triggers post_save_receiver for TrackingModelMixin
+                        # which updates the counter fields on related objects
+                        i.save()
                     self.log_success("%s (%d): created %d %s" % (device.name,
                                                                  device.id,
                                                                  len(items),

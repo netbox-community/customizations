@@ -28,7 +28,7 @@ class AddDeviceTypeComponents(Script):
     devices = MultiObjectVar(
         model=Device,
         query_params={
-            'device_type_id': '$device_type',
+            'device_type_id': '$device_type', 'manufacturer_id': '$manufacturer',
         },
     )
 

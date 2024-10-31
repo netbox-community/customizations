@@ -7,7 +7,8 @@ BACKUP YOUR DATABASE BEFORE USING!
 """
 
 from ipam.models import VRF, Prefix, IPAddress, IPRange
-from extras.scripts import Script, AbortScript, ObjectVar, IPAddressWithMaskVar, BooleanVar
+from extras.scripts import Script, ObjectVar, IPAddressWithMaskVar, BooleanVar
+from utilities.exceptions import AbortScript
 
 class Renumber(Script):
     class Meta:

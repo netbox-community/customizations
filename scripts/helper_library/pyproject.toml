@@ -1,0 +1,38 @@
+[tool.ruff]
+select = ["ANN", "C90", "D", "E", "F", "I", "W", "S"]
+ignore = ["ANN101", "D203", "D213", "D211", "D401", "D404"]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "ARG", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".venv",
+    "netbox",
+
+    # Tests
+    "test_basescript.py",
+    "test_utils.py",
+    "test_validators.py",
+    "testutils.py",
+]
+per-file-ignores = {"configuration.py" = ["E501"]}
+
+# Same as Black.
+line-length = 120
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+target-version = "py39"
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+[tool.black]
+exclude = "netbox/"
+
+[tool.pytest.ini_options]
+addopts = "--ignore netbox/"

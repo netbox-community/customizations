@@ -1,0 +1,3564 @@
+[
+  {
+    "model": "circuits.circuittype",
+    "pk": 1,
+    "fields": {
+      "created": "2023-03-21T12:24:31.852Z",
+      "last_updated": "2023-10-30T19:47:44.241Z",
+      "custom_field_data": {},
+      "name": "Dark Fiber",
+      "slug": "dark-fiber",
+      "description": ""
+    }
+  },
+  {
+    "model": "circuits.provider",
+    "pk": 2,
+    "fields": {
+      "created": "2023-03-21T12:28:17.916Z",
+      "last_updated": "2023-10-30T19:46:46.154Z",
+      "custom_field_data": {},
+      "name": "Provider1",
+      "slug": "provider1",
+      "asn": null,
+      "account": "",
+      "portal_url": "",
+      "noc_contact": "",
+      "admin_contact": "",
+      "comments": "",
+      "asns": []
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 1,
+    "fields": {
+      "created": "2019-11-04T00:00:00Z",
+      "last_updated": "2023-03-21T10:50:15.476Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": 9,
+      "name": "Northern America",
+      "slug": "northern-america",
+      "description": "",
+      "lft": 2,
+      "rght": 9,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 2,
+    "fields": {
+      "created": "2019-11-04T00:00:00Z",
+      "last_updated": "2019-11-04T19:34:47.123Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": 1,
+      "name": "West North America",
+      "slug": "wnam",
+      "description": "",
+      "lft": 7,
+      "rght": 8,
+      "tree_id": 4,
+      "level": 2
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 3,
+    "fields": {
+      "created": "2019-11-04T00:00:00Z",
+      "last_updated": "2019-11-04T19:35:48.865Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": 1,
+      "name": "East North America",
+      "slug": "enam",
+      "description": "",
+      "lft": 3,
+      "rght": 4,
+      "tree_id": 4,
+      "level": 2
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 4,
+    "fields": {
+      "created": "2019-11-04T00:00:00Z",
+      "last_updated": "2019-11-04T19:38:54.482Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": null,
+      "name": "Europe",
+      "slug": "eur",
+      "description": "",
+      "lft": 1,
+      "rght": 4,
+      "tree_id": 3,
+      "level": 0
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 5,
+    "fields": {
+      "created": "2019-11-04T00:00:00Z",
+      "last_updated": "2019-11-04T19:39:53.660Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": 4,
+      "name": "Western Europe",
+      "slug": "weur",
+      "description": "",
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 8,
+    "fields": {
+      "created": "2023-03-21T10:26:49.477Z",
+      "last_updated": "2023-03-21T10:26:49.477Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": null,
+      "name": "NET-META-ANY",
+      "slug": "net-meta-any",
+      "description": "",
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 5,
+      "level": 0
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 9,
+    "fields": {
+      "created": "2023-03-21T10:50:03.707Z",
+      "last_updated": "2023-03-21T10:50:03.707Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": null,
+      "name": "NAM",
+      "slug": "nam",
+      "description": "",
+      "lft": 1,
+      "rght": 10,
+      "tree_id": 4,
+      "level": 0
+    }
+  },
+  {
+    "model": "dcim.region",
+    "pk": 10,
+    "fields": {
+      "created": "2023-03-21T10:50:33.037Z",
+      "last_updated": "2023-03-21T10:50:33.037Z",
+      "custom_field_data": {
+        "region_type": null
+      },
+      "parent": 1,
+      "name": "United States",
+      "slug": "united-states",
+      "description": "",
+      "lft": 5,
+      "rght": 6,
+      "tree_id": 4,
+      "level": 2
+    }
+  },
+  {
+    "model": "dcim.site",
+    "pk": 5,
+    "fields": {
+      "created": "2023-03-21T10:31:05.443Z",
+      "last_updated": "2023-03-21T10:31:05.443Z",
+      "custom_field_data": {
+        "colo_id": null
+      },
+      "name": "NET-META-ANY",
+      "_name": "NET-META-ANY",
+      "slug": "net-meta-any",
+      "status": "active",
+      "region": 8,
+      "group": null,
+      "tenant": null,
+      "facility": "",
+      "time_zone": null,
+      "description": "A NET meta site in the NET-META-ANY region, accessible from anywhere",
+      "physical_address": "",
+      "shipping_address": "",
+      "latitude": null,
+      "longitude": null,
+      "comments": "",
+      "asns": []
+    }
+  },
+  {
+    "model": "dcim.site",
+    "pk": 6,
+    "fields": {
+      "created": "2023-03-21T10:50:51.957Z",
+      "last_updated": "2023-10-30T19:43:41.731Z",
+      "custom_field_data": {
+        "colo_id": null
+      },
+      "name": "DC02",
+      "_name": "DC00000002",
+      "slug": "dc02",
+      "status": "active",
+      "region": 10,
+      "group": null,
+      "tenant": null,
+      "facility": "",
+      "time_zone": null,
+      "description": "",
+      "physical_address": "",
+      "shipping_address": "",
+      "latitude": null,
+      "longitude": null,
+      "comments": "",
+      "asns": []
+    }
+  },
+  {
+    "model": "dcim.site",
+    "pk": 7,
+    "fields": {
+      "created": "2023-03-29T15:24:19.991Z",
+      "last_updated": "2023-10-30T19:43:29.614Z",
+      "custom_field_data": {
+        "colo_id": null
+      },
+      "name": "DC01",
+      "_name": "DC00000001",
+      "slug": "dc01",
+      "status": "active",
+      "region": 10,
+      "group": null,
+      "tenant": null,
+      "facility": "",
+      "time_zone": null,
+      "description": "",
+      "physical_address": "",
+      "shipping_address": "",
+      "latitude": null,
+      "longitude": null,
+      "comments": "",
+      "asns": []
+    }
+  },
+  {
+    "model": "dcim.manufacturer",
+    "pk": 4,
+    "fields": {
+      "created": "2023-03-21T10:20:46.729Z",
+      "last_updated": "2023-10-30T19:11:15.490Z",
+      "custom_field_data": {},
+      "name": "Common",
+      "slug": "common",
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.manufacturer",
+    "pk": 5,
+    "fields": {
+      "created": "2023-03-21T10:36:52.059Z",
+      "last_updated": "2023-03-21T10:36:52.059Z",
+      "custom_field_data": {},
+      "name": "Mellanox",
+      "slug": "mellanox",
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.manufacturer",
+    "pk": 6,
+    "fields": {
+      "created": "2023-03-29T15:18:21.233Z",
+      "last_updated": "2023-03-29T15:18:21.233Z",
+      "custom_field_data": {},
+      "name": "Juniper",
+      "slug": "juniper",
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.manufacturer",
+    "pk": 10,
+    "fields": {
+      "created": "2023-07-18T14:34:13.407Z",
+      "last_updated": "2023-07-18T14:34:13.407Z",
+      "custom_field_data": {},
+      "name": "Cisco",
+      "slug": "cisco",
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.manufacturer",
+    "pk": 12,
+    "fields": {
+      "created": "2023-10-31T10:47:07.728Z",
+      "last_updated": "2023-10-31T10:47:07.728Z",
+      "custom_field_data": {},
+      "name": "Arista",
+      "slug": "arista",
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.devicetype",
+    "pk": 15,
+    "fields": {
+      "created": "2023-03-21T10:37:10.661Z",
+      "last_updated": "2023-03-29T10:18:29.383Z",
+      "custom_field_data": {},
+      "manufacturer": 5,
+      "model": "SN2010",
+      "slug": "sn2010",
+      "part_number": "MSN2010",
+      "u_height": 1,
+      "is_full_depth": false,
+      "subdevice_role": "",
+      "airflow": "",
+      "front_image": "",
+      "rear_image": "",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.devicetype",
+    "pk": 16,
+    "fields": {
+      "created": "2023-03-29T15:18:46.053Z",
+      "last_updated": "2023-03-29T15:18:46.053Z",
+      "custom_field_data": {},
+      "manufacturer": 6,
+      "model": "QFX10008",
+      "slug": "qfx10008",
+      "part_number": "",
+      "u_height": 13,
+      "is_full_depth": true,
+      "subdevice_role": "",
+      "airflow": "",
+      "front_image": "",
+      "rear_image": "",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.devicetype",
+    "pk": 23,
+    "fields": {
+      "created": "2023-07-18T14:34:41.512Z",
+      "last_updated": "2023-07-18T14:34:41.512Z",
+      "custom_field_data": {},
+      "manufacturer": 10,
+      "model": "ISR4331",
+      "slug": "isr4331",
+      "part_number": "",
+      "u_height": 1,
+      "is_full_depth": false,
+      "subdevice_role": "",
+      "airflow": "",
+      "front_image": "",
+      "rear_image": "",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.devicetype",
+    "pk": 24,
+    "fields": {
+      "created": "2023-07-18T15:18:32.543Z",
+      "last_updated": "2023-10-31T13:02:20.310Z",
+      "custom_field_data": {},
+      "manufacturer": 4,
+      "model": "24-port LC/LC PP",
+      "slug": "24-port-lclc-pp",
+      "part_number": "",
+      "u_height": 1,
+      "is_full_depth": false,
+      "subdevice_role": "",
+      "airflow": "",
+      "front_image": "",
+      "rear_image": "",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.devicetype",
+    "pk": 25,
+    "fields": {
+      "created": "2023-10-30T19:11:05.209Z",
+      "last_updated": "2023-10-31T10:45:48.114Z",
+      "custom_field_data": {},
+      "manufacturer": 4,
+      "model": "NET-META-Peer",
+      "slug": "net-meta-peer",
+      "part_number": "",
+      "u_height": 0,
+      "is_full_depth": false,
+      "subdevice_role": "",
+      "airflow": "",
+      "front_image": "",
+      "rear_image": "",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.moduletype",
+    "pk": 1,
+    "fields": {
+      "created": "2023-03-29T15:20:46.204Z",
+      "last_updated": "2023-03-29T15:20:46.204Z",
+      "custom_field_data": {},
+      "manufacturer": 6,
+      "model": "QFX10000-30C",
+      "part_number": "750-051357",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.moduletype",
+    "pk": 2,
+    "fields": {
+      "created": "2023-03-29T15:21:25.899Z",
+      "last_updated": "2023-03-29T15:21:25.899Z",
+      "custom_field_data": {},
+      "manufacturer": 6,
+      "model": "QFX10000-36Q",
+      "part_number": "750-068822",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.moduletype",
+    "pk": 10,
+    "fields": {
+      "created": "2023-07-18T14:35:28.647Z",
+      "last_updated": "2023-07-18T14:35:28.647Z",
+      "custom_field_data": {},
+      "manufacturer": 10,
+      "model": "NIM-24A",
+      "part_number": "",
+      "comments": ""
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 1,
+    "fields": {
+      "created": "2023-03-29T15:19:02.790Z",
+      "last_updated": "2023-03-29T15:19:02.790Z",
+      "device_type": 16,
+      "name": "CB0",
+      "_name": "CB00000000",
+      "label": "",
+      "description": "",
+      "position": ""
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 2,
+    "fields": {
+      "created": "2023-03-29T15:19:02.797Z",
+      "last_updated": "2023-03-29T15:19:02.797Z",
+      "device_type": 16,
+      "name": "CB1",
+      "_name": "CB00000001",
+      "label": "",
+      "description": "",
+      "position": ""
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 3,
+    "fields": {
+      "created": "2023-03-29T15:19:16.747Z",
+      "last_updated": "2023-03-29T15:19:16.747Z",
+      "device_type": 16,
+      "name": "FPC0",
+      "_name": "FPC00000000",
+      "label": "",
+      "description": "",
+      "position": "0"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 4,
+    "fields": {
+      "created": "2023-03-29T15:19:16.755Z",
+      "last_updated": "2023-03-29T15:19:16.755Z",
+      "device_type": 16,
+      "name": "FPC1",
+      "_name": "FPC00000001",
+      "label": "",
+      "description": "",
+      "position": "1"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 5,
+    "fields": {
+      "created": "2023-03-29T15:19:16.758Z",
+      "last_updated": "2023-03-29T15:19:16.758Z",
+      "device_type": 16,
+      "name": "FPC2",
+      "_name": "FPC00000002",
+      "label": "",
+      "description": "",
+      "position": "2"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 6,
+    "fields": {
+      "created": "2023-03-29T15:19:16.760Z",
+      "last_updated": "2023-03-29T15:19:16.761Z",
+      "device_type": 16,
+      "name": "FPC3",
+      "_name": "FPC00000003",
+      "label": "",
+      "description": "",
+      "position": "3"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 7,
+    "fields": {
+      "created": "2023-03-29T15:19:16.763Z",
+      "last_updated": "2023-03-29T15:19:16.763Z",
+      "device_type": 16,
+      "name": "FPC4",
+      "_name": "FPC00000004",
+      "label": "",
+      "description": "",
+      "position": "4"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 8,
+    "fields": {
+      "created": "2023-03-29T15:19:16.765Z",
+      "last_updated": "2023-03-29T15:19:16.765Z",
+      "device_type": 16,
+      "name": "FPC5",
+      "_name": "FPC00000005",
+      "label": "",
+      "description": "",
+      "position": "5"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 9,
+    "fields": {
+      "created": "2023-03-29T15:19:16.767Z",
+      "last_updated": "2023-03-29T15:19:16.767Z",
+      "device_type": 16,
+      "name": "FPC6",
+      "_name": "FPC00000006",
+      "label": "",
+      "description": "",
+      "position": "6"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 10,
+    "fields": {
+      "created": "2023-03-29T15:19:16.769Z",
+      "last_updated": "2023-03-29T15:19:16.769Z",
+      "device_type": 16,
+      "name": "FPC7",
+      "_name": "FPC00000007",
+      "label": "",
+      "description": "",
+      "position": "7"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 26,
+    "fields": {
+      "created": "2023-07-18T14:34:41.565Z",
+      "last_updated": "2023-07-18T14:34:41.565Z",
+      "device_type": 23,
+      "name": "0/1",
+      "_name": "00000000/00000001",
+      "label": "",
+      "description": "",
+      "position": "0/1"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 27,
+    "fields": {
+      "created": "2023-07-18T14:34:41.570Z",
+      "last_updated": "2023-07-18T14:34:41.570Z",
+      "device_type": 23,
+      "name": "0/2",
+      "_name": "00000000/00000002",
+      "label": "",
+      "description": "",
+      "position": "0/2"
+    }
+  },
+  {
+    "model": "dcim.modulebaytemplate",
+    "pk": 28,
+    "fields": {
+      "created": "2023-07-18T14:34:41.575Z",
+      "last_updated": "2023-07-18T14:34:41.575Z",
+      "device_type": 23,
+      "name": "1/0",
+      "_name": "00000001/00000000",
+      "label": "",
+      "description": "",
+      "position": "1/0"
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 38,
+    "fields": {
+      "created": "2023-03-21T10:37:26.564Z",
+      "last_updated": "2023-10-31T11:37:09.917Z",
+      "name": "Ethernet1",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000001............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 39,
+    "fields": {
+      "created": "2023-03-21T10:37:26.571Z",
+      "last_updated": "2023-10-31T11:37:09.939Z",
+      "name": "Ethernet2",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000002............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 40,
+    "fields": {
+      "created": "2023-03-21T10:37:26.574Z",
+      "last_updated": "2023-10-31T11:37:09.943Z",
+      "name": "Ethernet3",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000003............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 41,
+    "fields": {
+      "created": "2023-03-21T10:37:26.578Z",
+      "last_updated": "2023-10-31T11:37:09.949Z",
+      "name": "Ethernet4",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000004............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 42,
+    "fields": {
+      "created": "2023-03-21T10:37:26.581Z",
+      "last_updated": "2023-10-31T11:37:09.956Z",
+      "name": "Ethernet5",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000005............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 43,
+    "fields": {
+      "created": "2023-03-21T10:37:26.585Z",
+      "last_updated": "2023-10-31T11:37:09.966Z",
+      "name": "Ethernet6",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000006............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 44,
+    "fields": {
+      "created": "2023-03-21T10:37:26.590Z",
+      "last_updated": "2023-10-31T11:37:09.975Z",
+      "name": "Ethernet7",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000007............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 45,
+    "fields": {
+      "created": "2023-03-21T10:37:26.595Z",
+      "last_updated": "2023-10-31T11:37:09.984Z",
+      "name": "Ethernet8",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000008............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 46,
+    "fields": {
+      "created": "2023-03-21T10:37:26.598Z",
+      "last_updated": "2023-10-31T11:37:09.993Z",
+      "name": "Ethernet9",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000009............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 47,
+    "fields": {
+      "created": "2023-03-21T10:37:26.601Z",
+      "last_updated": "2023-10-31T11:37:10.000Z",
+      "name": "Ethernet10",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000010............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 48,
+    "fields": {
+      "created": "2023-03-21T10:37:26.604Z",
+      "last_updated": "2023-10-31T11:37:10.004Z",
+      "name": "Ethernet11",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000011............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 49,
+    "fields": {
+      "created": "2023-03-21T10:37:26.607Z",
+      "last_updated": "2023-10-31T11:37:10.007Z",
+      "name": "Ethernet12",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000012............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 50,
+    "fields": {
+      "created": "2023-03-21T10:37:26.609Z",
+      "last_updated": "2023-10-31T11:37:10.011Z",
+      "name": "Ethernet13",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000013............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 51,
+    "fields": {
+      "created": "2023-03-21T10:37:26.612Z",
+      "last_updated": "2023-10-31T11:37:10.015Z",
+      "name": "Ethernet14",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000014............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 52,
+    "fields": {
+      "created": "2023-03-21T10:37:26.615Z",
+      "last_updated": "2023-10-31T11:37:10.019Z",
+      "name": "Ethernet15",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000015............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 53,
+    "fields": {
+      "created": "2023-03-21T10:37:26.617Z",
+      "last_updated": "2023-10-31T11:37:10.023Z",
+      "name": "Ethernet16",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000016............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 54,
+    "fields": {
+      "created": "2023-03-21T10:37:26.619Z",
+      "last_updated": "2023-10-31T11:37:10.027Z",
+      "name": "Ethernet17",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000017............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 55,
+    "fields": {
+      "created": "2023-03-21T10:37:26.622Z",
+      "last_updated": "2023-10-31T11:37:10.032Z",
+      "name": "Ethernet18",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000018............",
+      "type": "25gbase-x-sfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 56,
+    "fields": {
+      "created": "2023-03-21T10:37:37.444Z",
+      "last_updated": "2023-10-31T11:37:10.036Z",
+      "name": "Ethernet19",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000019............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 57,
+    "fields": {
+      "created": "2023-03-21T10:37:37.451Z",
+      "last_updated": "2023-10-31T11:37:10.039Z",
+      "name": "Ethernet20",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000020............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 58,
+    "fields": {
+      "created": "2023-03-21T10:37:37.454Z",
+      "last_updated": "2023-10-31T11:37:10.043Z",
+      "name": "Ethernet21",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000021............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 59,
+    "fields": {
+      "created": "2023-03-21T10:37:37.456Z",
+      "last_updated": "2023-10-31T11:37:10.048Z",
+      "name": "Ethernet22",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999Ethernet000022............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 60,
+    "fields": {
+      "created": "2023-03-21T10:37:44.530Z",
+      "last_updated": "2023-10-31T11:37:10.051Z",
+      "name": "lo",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999lo..................",
+      "type": "virtual",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 61,
+    "fields": {
+      "created": "2023-03-21T10:37:52.764Z",
+      "last_updated": "2023-10-31T11:37:10.055Z",
+      "name": "mgmt",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "_name": "9999999999999999mgmt..................",
+      "type": "1000base-t",
+      "mgmt_only": true
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 62,
+    "fields": {
+      "created": "2023-03-29T15:21:09.797Z",
+      "last_updated": "2023-03-29T15:21:09.797Z",
+      "name": "et-{module}/0/0",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000000............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 63,
+    "fields": {
+      "created": "2023-03-29T15:21:09.801Z",
+      "last_updated": "2023-03-29T15:21:09.801Z",
+      "name": "et-{module}/0/1",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000001............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 64,
+    "fields": {
+      "created": "2023-03-29T15:21:09.804Z",
+      "last_updated": "2023-03-29T15:21:09.804Z",
+      "name": "et-{module}/0/2",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000002............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 65,
+    "fields": {
+      "created": "2023-03-29T15:21:09.808Z",
+      "last_updated": "2023-03-29T15:21:09.808Z",
+      "name": "et-{module}/0/3",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000003............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 66,
+    "fields": {
+      "created": "2023-03-29T15:21:09.810Z",
+      "last_updated": "2023-03-29T15:21:09.810Z",
+      "name": "et-{module}/0/4",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000004............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 67,
+    "fields": {
+      "created": "2023-03-29T15:21:09.813Z",
+      "last_updated": "2023-03-29T15:21:09.813Z",
+      "name": "et-{module}/0/5",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000005............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 68,
+    "fields": {
+      "created": "2023-03-29T15:21:09.816Z",
+      "last_updated": "2023-03-29T15:21:09.816Z",
+      "name": "et-{module}/0/6",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000006............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 69,
+    "fields": {
+      "created": "2023-03-29T15:21:09.818Z",
+      "last_updated": "2023-03-29T15:21:09.818Z",
+      "name": "et-{module}/0/7",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000007............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 70,
+    "fields": {
+      "created": "2023-03-29T15:21:09.821Z",
+      "last_updated": "2023-03-29T15:21:09.821Z",
+      "name": "et-{module}/0/8",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000008............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 71,
+    "fields": {
+      "created": "2023-03-29T15:21:09.824Z",
+      "last_updated": "2023-03-29T15:21:09.824Z",
+      "name": "et-{module}/0/9",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000009............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 72,
+    "fields": {
+      "created": "2023-03-29T15:21:09.826Z",
+      "last_updated": "2023-03-29T15:21:09.826Z",
+      "name": "et-{module}/0/10",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000010............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 73,
+    "fields": {
+      "created": "2023-03-29T15:21:09.829Z",
+      "last_updated": "2023-03-29T15:21:09.829Z",
+      "name": "et-{module}/0/11",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000011............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 74,
+    "fields": {
+      "created": "2023-03-29T15:21:09.831Z",
+      "last_updated": "2023-03-29T15:21:09.831Z",
+      "name": "et-{module}/0/12",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000012............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 75,
+    "fields": {
+      "created": "2023-03-29T15:21:09.834Z",
+      "last_updated": "2023-03-29T15:21:09.834Z",
+      "name": "et-{module}/0/13",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000013............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 76,
+    "fields": {
+      "created": "2023-03-29T15:21:09.836Z",
+      "last_updated": "2023-03-29T15:21:09.836Z",
+      "name": "et-{module}/0/14",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000014............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 77,
+    "fields": {
+      "created": "2023-03-29T15:21:09.839Z",
+      "last_updated": "2023-03-29T15:21:09.839Z",
+      "name": "et-{module}/0/15",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000015............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 78,
+    "fields": {
+      "created": "2023-03-29T15:21:09.842Z",
+      "last_updated": "2023-03-29T15:21:09.842Z",
+      "name": "et-{module}/0/16",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000016............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 79,
+    "fields": {
+      "created": "2023-03-29T15:21:09.844Z",
+      "last_updated": "2023-03-29T15:21:09.844Z",
+      "name": "et-{module}/0/17",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000017............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 80,
+    "fields": {
+      "created": "2023-03-29T15:21:09.847Z",
+      "last_updated": "2023-03-29T15:21:09.847Z",
+      "name": "et-{module}/0/18",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000018............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 81,
+    "fields": {
+      "created": "2023-03-29T15:21:09.849Z",
+      "last_updated": "2023-03-29T15:21:09.849Z",
+      "name": "et-{module}/0/19",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000019............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 82,
+    "fields": {
+      "created": "2023-03-29T15:21:09.851Z",
+      "last_updated": "2023-03-29T15:21:09.851Z",
+      "name": "et-{module}/0/20",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000020............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 83,
+    "fields": {
+      "created": "2023-03-29T15:21:09.856Z",
+      "last_updated": "2023-03-29T15:21:09.856Z",
+      "name": "et-{module}/0/21",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000021............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 84,
+    "fields": {
+      "created": "2023-03-29T15:21:09.859Z",
+      "last_updated": "2023-03-29T15:21:09.859Z",
+      "name": "et-{module}/0/22",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000022............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 85,
+    "fields": {
+      "created": "2023-03-29T15:21:09.862Z",
+      "last_updated": "2023-03-29T15:21:09.862Z",
+      "name": "et-{module}/0/23",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000023............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 86,
+    "fields": {
+      "created": "2023-03-29T15:21:09.864Z",
+      "last_updated": "2023-03-29T15:21:09.865Z",
+      "name": "et-{module}/0/24",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000024............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 87,
+    "fields": {
+      "created": "2023-03-29T15:21:09.867Z",
+      "last_updated": "2023-03-29T15:21:09.867Z",
+      "name": "et-{module}/0/25",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000025............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 88,
+    "fields": {
+      "created": "2023-03-29T15:21:09.869Z",
+      "last_updated": "2023-03-29T15:21:09.869Z",
+      "name": "et-{module}/0/26",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000026............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 89,
+    "fields": {
+      "created": "2023-03-29T15:21:09.873Z",
+      "last_updated": "2023-03-29T15:21:09.873Z",
+      "name": "et-{module}/0/27",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000027............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 90,
+    "fields": {
+      "created": "2023-03-29T15:21:09.876Z",
+      "last_updated": "2023-03-29T15:21:09.876Z",
+      "name": "et-{module}/0/28",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000028............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 91,
+    "fields": {
+      "created": "2023-03-29T15:21:09.879Z",
+      "last_updated": "2023-03-29T15:21:09.879Z",
+      "name": "et-{module}/0/29",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 1,
+      "_name": "0000999999999999et-{module}/000029............",
+      "type": "100gbase-x-qsfp28",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 92,
+    "fields": {
+      "created": "2023-03-29T15:22:00.467Z",
+      "last_updated": "2023-03-29T15:22:00.467Z",
+      "name": "et-{module}/0/0",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000000............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 93,
+    "fields": {
+      "created": "2023-03-29T15:22:00.475Z",
+      "last_updated": "2023-03-29T15:22:00.475Z",
+      "name": "et-{module}/0/1",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000001............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 94,
+    "fields": {
+      "created": "2023-03-29T15:22:00.478Z",
+      "last_updated": "2023-03-29T15:22:00.478Z",
+      "name": "et-{module}/0/2",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000002............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 95,
+    "fields": {
+      "created": "2023-03-29T15:22:00.481Z",
+      "last_updated": "2023-03-29T15:22:00.481Z",
+      "name": "et-{module}/0/3",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000003............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 96,
+    "fields": {
+      "created": "2023-03-29T15:22:00.484Z",
+      "last_updated": "2023-03-29T15:22:00.484Z",
+      "name": "et-{module}/0/4",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000004............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 97,
+    "fields": {
+      "created": "2023-03-29T15:22:00.487Z",
+      "last_updated": "2023-03-29T15:22:00.487Z",
+      "name": "et-{module}/0/5",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000005............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 98,
+    "fields": {
+      "created": "2023-03-29T15:22:00.489Z",
+      "last_updated": "2023-03-29T15:22:00.489Z",
+      "name": "et-{module}/0/6",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000006............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 99,
+    "fields": {
+      "created": "2023-03-29T15:22:00.491Z",
+      "last_updated": "2023-03-29T15:22:00.491Z",
+      "name": "et-{module}/0/7",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000007............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 100,
+    "fields": {
+      "created": "2023-03-29T15:22:00.494Z",
+      "last_updated": "2023-03-29T15:22:00.494Z",
+      "name": "et-{module}/0/8",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000008............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 101,
+    "fields": {
+      "created": "2023-03-29T15:22:00.498Z",
+      "last_updated": "2023-03-29T15:22:00.498Z",
+      "name": "et-{module}/0/9",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000009............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 102,
+    "fields": {
+      "created": "2023-03-29T15:22:00.501Z",
+      "last_updated": "2023-03-29T15:22:00.501Z",
+      "name": "et-{module}/0/10",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000010............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 103,
+    "fields": {
+      "created": "2023-03-29T15:22:00.503Z",
+      "last_updated": "2023-03-29T15:22:00.503Z",
+      "name": "et-{module}/0/11",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000011............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 104,
+    "fields": {
+      "created": "2023-03-29T15:22:00.506Z",
+      "last_updated": "2023-03-29T15:22:00.506Z",
+      "name": "et-{module}/0/12",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000012............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 105,
+    "fields": {
+      "created": "2023-03-29T15:22:00.508Z",
+      "last_updated": "2023-03-29T15:22:00.508Z",
+      "name": "et-{module}/0/13",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000013............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 106,
+    "fields": {
+      "created": "2023-03-29T15:22:00.511Z",
+      "last_updated": "2023-03-29T15:22:00.511Z",
+      "name": "et-{module}/0/14",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000014............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 107,
+    "fields": {
+      "created": "2023-03-29T15:22:00.514Z",
+      "last_updated": "2023-03-29T15:22:00.514Z",
+      "name": "et-{module}/0/15",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000015............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 108,
+    "fields": {
+      "created": "2023-03-29T15:22:00.516Z",
+      "last_updated": "2023-03-29T15:22:00.516Z",
+      "name": "et-{module}/0/16",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000016............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 109,
+    "fields": {
+      "created": "2023-03-29T15:22:00.518Z",
+      "last_updated": "2023-03-29T15:22:00.518Z",
+      "name": "et-{module}/0/17",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000017............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 110,
+    "fields": {
+      "created": "2023-03-29T15:22:00.521Z",
+      "last_updated": "2023-03-29T15:22:00.521Z",
+      "name": "et-{module}/0/18",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000018............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 111,
+    "fields": {
+      "created": "2023-03-29T15:22:00.523Z",
+      "last_updated": "2023-03-29T15:22:00.523Z",
+      "name": "et-{module}/0/19",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000019............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 112,
+    "fields": {
+      "created": "2023-03-29T15:22:00.526Z",
+      "last_updated": "2023-03-29T15:22:00.526Z",
+      "name": "et-{module}/0/20",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000020............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 113,
+    "fields": {
+      "created": "2023-03-29T15:22:00.529Z",
+      "last_updated": "2023-03-29T15:22:00.529Z",
+      "name": "et-{module}/0/21",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000021............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 114,
+    "fields": {
+      "created": "2023-03-29T15:22:00.531Z",
+      "last_updated": "2023-03-29T15:22:00.531Z",
+      "name": "et-{module}/0/22",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000022............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 115,
+    "fields": {
+      "created": "2023-03-29T15:22:00.533Z",
+      "last_updated": "2023-03-29T15:22:00.533Z",
+      "name": "et-{module}/0/23",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000023............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 116,
+    "fields": {
+      "created": "2023-03-29T15:22:00.536Z",
+      "last_updated": "2023-03-29T15:22:00.536Z",
+      "name": "et-{module}/0/24",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000024............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 117,
+    "fields": {
+      "created": "2023-03-29T15:22:00.539Z",
+      "last_updated": "2023-03-29T15:22:00.539Z",
+      "name": "et-{module}/0/25",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000025............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 118,
+    "fields": {
+      "created": "2023-03-29T15:22:00.541Z",
+      "last_updated": "2023-03-29T15:22:00.541Z",
+      "name": "et-{module}/0/26",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000026............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 119,
+    "fields": {
+      "created": "2023-03-29T15:22:00.544Z",
+      "last_updated": "2023-03-29T15:22:00.544Z",
+      "name": "et-{module}/0/27",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000027............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 120,
+    "fields": {
+      "created": "2023-03-29T15:22:00.547Z",
+      "last_updated": "2023-03-29T15:22:00.547Z",
+      "name": "et-{module}/0/28",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000028............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 121,
+    "fields": {
+      "created": "2023-03-29T15:22:00.549Z",
+      "last_updated": "2023-03-29T15:22:00.549Z",
+      "name": "et-{module}/0/29",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000029............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 122,
+    "fields": {
+      "created": "2023-03-29T15:22:00.552Z",
+      "last_updated": "2023-03-29T15:22:00.552Z",
+      "name": "et-{module}/0/30",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000030............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 123,
+    "fields": {
+      "created": "2023-03-29T15:22:00.554Z",
+      "last_updated": "2023-03-29T15:22:00.554Z",
+      "name": "et-{module}/0/31",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000031............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 124,
+    "fields": {
+      "created": "2023-03-29T15:22:00.557Z",
+      "last_updated": "2023-03-29T15:22:00.557Z",
+      "name": "et-{module}/0/32",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000032............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 125,
+    "fields": {
+      "created": "2023-03-29T15:22:00.559Z",
+      "last_updated": "2023-03-29T15:22:00.559Z",
+      "name": "et-{module}/0/33",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000033............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 126,
+    "fields": {
+      "created": "2023-03-29T15:22:00.562Z",
+      "last_updated": "2023-03-29T15:22:00.562Z",
+      "name": "et-{module}/0/34",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000034............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 127,
+    "fields": {
+      "created": "2023-03-29T15:22:00.564Z",
+      "last_updated": "2023-03-29T15:22:00.564Z",
+      "name": "et-{module}/0/35",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 2,
+      "_name": "0000999999999999et-{module}/000035............",
+      "type": "40gbase-x-qsfpp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 148,
+    "fields": {
+      "created": "2023-07-18T14:34:41.540Z",
+      "last_updated": "2023-07-18T14:34:41.540Z",
+      "name": "GigabitEthernet0/0/0",
+      "label": "",
+      "description": "",
+      "device_type": 23,
+      "module_type": null,
+      "_name": "0000000099999999GigabitEthernet000000............",
+      "type": "1000base-t",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 149,
+    "fields": {
+      "created": "2023-07-18T14:34:41.547Z",
+      "last_updated": "2023-07-18T14:34:41.547Z",
+      "name": "GigabitEthernet0/0/1",
+      "label": "",
+      "description": "",
+      "device_type": 23,
+      "module_type": null,
+      "_name": "0000000099999999GigabitEthernet000001............",
+      "type": "1000base-t",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 150,
+    "fields": {
+      "created": "2023-07-18T14:34:41.552Z",
+      "last_updated": "2023-07-18T14:34:41.552Z",
+      "name": "GigabitEthernet0/0/2",
+      "label": "",
+      "description": "",
+      "device_type": 23,
+      "module_type": null,
+      "_name": "0000000099999999GigabitEthernet000002............",
+      "type": "1000base-x-sfp",
+      "mgmt_only": false
+    }
+  },
+  {
+    "model": "dcim.interfacetemplate",
+    "pk": 151,
+    "fields": {
+      "created": "2023-07-18T14:34:41.558Z",
+      "last_updated": "2023-07-18T14:34:41.558Z",
+      "name": "GigabitEthernet0",
+      "label": "",
+      "description": "",
+      "device_type": 23,
+      "module_type": null,
+      "_name": "9999999999999999GigabitEthernet000000............",
+      "type": "1000base-t",
+      "mgmt_only": true
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 61,
+    "fields": {
+      "created": "2023-07-18T15:18:32.707Z",
+      "last_updated": "2023-07-18T15:18:32.707Z",
+      "name": "1",
+      "_name": "00000001",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 13,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 62,
+    "fields": {
+      "created": "2023-07-18T15:18:32.715Z",
+      "last_updated": "2023-07-18T15:18:32.715Z",
+      "name": "2",
+      "_name": "00000002",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 14,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 63,
+    "fields": {
+      "created": "2023-07-18T15:18:32.722Z",
+      "last_updated": "2023-07-18T15:18:32.722Z",
+      "name": "3",
+      "_name": "00000003",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 15,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 64,
+    "fields": {
+      "created": "2023-07-18T15:18:32.730Z",
+      "last_updated": "2023-07-18T15:18:32.730Z",
+      "name": "4",
+      "_name": "00000004",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 16,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 65,
+    "fields": {
+      "created": "2023-07-18T15:18:32.737Z",
+      "last_updated": "2023-07-18T15:18:32.737Z",
+      "name": "5",
+      "_name": "00000005",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 17,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 66,
+    "fields": {
+      "created": "2023-07-18T15:18:32.746Z",
+      "last_updated": "2023-07-18T15:18:32.746Z",
+      "name": "6",
+      "_name": "00000006",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 18,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 67,
+    "fields": {
+      "created": "2023-07-18T15:18:32.754Z",
+      "last_updated": "2023-07-18T15:18:32.754Z",
+      "name": "7",
+      "_name": "00000007",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 19,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 68,
+    "fields": {
+      "created": "2023-07-18T15:18:32.763Z",
+      "last_updated": "2023-07-18T15:18:32.763Z",
+      "name": "8",
+      "_name": "00000008",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 20,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 69,
+    "fields": {
+      "created": "2023-07-18T15:18:32.770Z",
+      "last_updated": "2023-07-18T15:18:32.770Z",
+      "name": "9",
+      "_name": "00000009",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 21,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 70,
+    "fields": {
+      "created": "2023-07-18T15:18:32.778Z",
+      "last_updated": "2023-07-18T15:18:32.778Z",
+      "name": "10",
+      "_name": "00000010",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 22,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 71,
+    "fields": {
+      "created": "2023-07-18T15:18:32.785Z",
+      "last_updated": "2023-07-18T15:18:32.785Z",
+      "name": "11",
+      "_name": "00000011",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 23,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 72,
+    "fields": {
+      "created": "2023-07-18T15:18:32.794Z",
+      "last_updated": "2023-07-18T15:18:32.794Z",
+      "name": "12",
+      "_name": "00000012",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 24,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 73,
+    "fields": {
+      "created": "2023-07-18T15:18:32.802Z",
+      "last_updated": "2023-07-18T15:18:32.802Z",
+      "name": "13",
+      "_name": "00000013",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 25,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 74,
+    "fields": {
+      "created": "2023-07-18T15:18:32.810Z",
+      "last_updated": "2023-07-18T15:18:32.810Z",
+      "name": "14",
+      "_name": "00000014",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 26,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 75,
+    "fields": {
+      "created": "2023-07-18T15:18:32.818Z",
+      "last_updated": "2023-07-18T15:18:32.818Z",
+      "name": "15",
+      "_name": "00000015",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 27,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 76,
+    "fields": {
+      "created": "2023-07-18T15:18:32.826Z",
+      "last_updated": "2023-07-18T15:18:32.826Z",
+      "name": "16",
+      "_name": "00000016",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 28,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 77,
+    "fields": {
+      "created": "2023-07-18T15:18:32.834Z",
+      "last_updated": "2023-07-18T15:18:32.834Z",
+      "name": "17",
+      "_name": "00000017",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 29,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 78,
+    "fields": {
+      "created": "2023-07-18T15:18:32.843Z",
+      "last_updated": "2023-07-18T15:18:32.843Z",
+      "name": "18",
+      "_name": "00000018",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 30,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 79,
+    "fields": {
+      "created": "2023-07-18T15:18:32.850Z",
+      "last_updated": "2023-07-18T15:18:32.850Z",
+      "name": "19",
+      "_name": "00000019",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 31,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 80,
+    "fields": {
+      "created": "2023-07-18T15:18:32.859Z",
+      "last_updated": "2023-07-18T15:18:32.859Z",
+      "name": "20",
+      "_name": "00000020",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 32,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 81,
+    "fields": {
+      "created": "2023-07-18T15:18:32.867Z",
+      "last_updated": "2023-07-18T15:18:32.867Z",
+      "name": "21",
+      "_name": "00000021",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 33,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 82,
+    "fields": {
+      "created": "2023-07-18T15:18:32.875Z",
+      "last_updated": "2023-07-18T15:18:32.875Z",
+      "name": "22",
+      "_name": "00000022",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 34,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 83,
+    "fields": {
+      "created": "2023-07-18T15:18:32.883Z",
+      "last_updated": "2023-07-18T15:18:32.883Z",
+      "name": "23",
+      "_name": "00000023",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 35,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.frontporttemplate",
+    "pk": 84,
+    "fields": {
+      "created": "2023-07-18T15:18:32.890Z",
+      "last_updated": "2023-07-18T15:18:32.890Z",
+      "name": "24",
+      "_name": "00000024",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "rear_port": 36,
+      "rear_port_position": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 13,
+    "fields": {
+      "created": "2023-07-18T15:18:32.570Z",
+      "last_updated": "2023-07-18T15:18:32.570Z",
+      "name": "1",
+      "_name": "00000001",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 14,
+    "fields": {
+      "created": "2023-07-18T15:18:32.577Z",
+      "last_updated": "2023-07-18T15:18:32.577Z",
+      "name": "2",
+      "_name": "00000002",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 15,
+    "fields": {
+      "created": "2023-07-18T15:18:32.582Z",
+      "last_updated": "2023-07-18T15:18:32.582Z",
+      "name": "3",
+      "_name": "00000003",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 16,
+    "fields": {
+      "created": "2023-07-18T15:18:32.587Z",
+      "last_updated": "2023-07-18T15:18:32.587Z",
+      "name": "4",
+      "_name": "00000004",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 17,
+    "fields": {
+      "created": "2023-07-18T15:18:32.593Z",
+      "last_updated": "2023-07-18T15:18:32.593Z",
+      "name": "5",
+      "_name": "00000005",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 18,
+    "fields": {
+      "created": "2023-07-18T15:18:32.598Z",
+      "last_updated": "2023-07-18T15:18:32.598Z",
+      "name": "6",
+      "_name": "00000006",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 19,
+    "fields": {
+      "created": "2023-07-18T15:18:32.603Z",
+      "last_updated": "2023-07-18T15:18:32.603Z",
+      "name": "7",
+      "_name": "00000007",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 20,
+    "fields": {
+      "created": "2023-07-18T15:18:32.609Z",
+      "last_updated": "2023-07-18T15:18:32.609Z",
+      "name": "8",
+      "_name": "00000008",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 21,
+    "fields": {
+      "created": "2023-07-18T15:18:32.615Z",
+      "last_updated": "2023-07-18T15:18:32.615Z",
+      "name": "9",
+      "_name": "00000009",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 22,
+    "fields": {
+      "created": "2023-07-18T15:18:32.620Z",
+      "last_updated": "2023-07-18T15:18:32.620Z",
+      "name": "10",
+      "_name": "00000010",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 23,
+    "fields": {
+      "created": "2023-07-18T15:18:32.625Z",
+      "last_updated": "2023-07-18T15:18:32.625Z",
+      "name": "11",
+      "_name": "00000011",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 24,
+    "fields": {
+      "created": "2023-07-18T15:18:32.631Z",
+      "last_updated": "2023-07-18T15:18:32.631Z",
+      "name": "12",
+      "_name": "00000012",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 25,
+    "fields": {
+      "created": "2023-07-18T15:18:32.636Z",
+      "last_updated": "2023-07-18T15:18:32.636Z",
+      "name": "13",
+      "_name": "00000013",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 26,
+    "fields": {
+      "created": "2023-07-18T15:18:32.641Z",
+      "last_updated": "2023-07-18T15:18:32.641Z",
+      "name": "14",
+      "_name": "00000014",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 27,
+    "fields": {
+      "created": "2023-07-18T15:18:32.648Z",
+      "last_updated": "2023-07-18T15:18:32.648Z",
+      "name": "15",
+      "_name": "00000015",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 28,
+    "fields": {
+      "created": "2023-07-18T15:18:32.653Z",
+      "last_updated": "2023-07-18T15:18:32.653Z",
+      "name": "16",
+      "_name": "00000016",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 29,
+    "fields": {
+      "created": "2023-07-18T15:18:32.659Z",
+      "last_updated": "2023-07-18T15:18:32.659Z",
+      "name": "17",
+      "_name": "00000017",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 30,
+    "fields": {
+      "created": "2023-07-18T15:18:32.665Z",
+      "last_updated": "2023-07-18T15:18:32.665Z",
+      "name": "18",
+      "_name": "00000018",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 31,
+    "fields": {
+      "created": "2023-07-18T15:18:32.670Z",
+      "last_updated": "2023-07-18T15:18:32.670Z",
+      "name": "19",
+      "_name": "00000019",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 32,
+    "fields": {
+      "created": "2023-07-18T15:18:32.675Z",
+      "last_updated": "2023-07-18T15:18:32.675Z",
+      "name": "20",
+      "_name": "00000020",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 33,
+    "fields": {
+      "created": "2023-07-18T15:18:32.681Z",
+      "last_updated": "2023-07-18T15:18:32.681Z",
+      "name": "21",
+      "_name": "00000021",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 34,
+    "fields": {
+      "created": "2023-07-18T15:18:32.687Z",
+      "last_updated": "2023-07-18T15:18:32.687Z",
+      "name": "22",
+      "_name": "00000022",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 35,
+    "fields": {
+      "created": "2023-07-18T15:18:32.692Z",
+      "last_updated": "2023-07-18T15:18:32.692Z",
+      "name": "23",
+      "_name": "00000023",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.rearporttemplate",
+    "pk": 36,
+    "fields": {
+      "created": "2023-07-18T15:18:32.698Z",
+      "last_updated": "2023-07-18T15:18:32.698Z",
+      "name": "24",
+      "_name": "00000024",
+      "label": "",
+      "description": "",
+      "device_type": 24,
+      "module_type": null,
+      "type": "lc",
+      "color": "",
+      "positions": 1
+    }
+  },
+  {
+    "model": "dcim.consoleporttemplate",
+    "pk": 1,
+    "fields": {
+      "created": "2023-03-21T10:38:05.860Z",
+      "last_updated": "2023-03-21T10:38:05.860Z",
+      "name": "con0",
+      "_name": "con00000000",
+      "label": "",
+      "description": "",
+      "device_type": 15,
+      "module_type": null,
+      "type": "rj-45"
+    }
+  },
+  {
+    "model": "dcim.consoleporttemplate",
+    "pk": 2,
+    "fields": {
+      "created": "2023-03-29T15:19:44.701Z",
+      "last_updated": "2023-03-29T15:19:44.701Z",
+      "name": "re0.console",
+      "_name": "re00000000.console",
+      "label": "",
+      "description": "",
+      "device_type": 16,
+      "module_type": null,
+      "type": "rj-45"
+    }
+  },
+  {
+    "model": "dcim.consoleporttemplate",
+    "pk": 3,
+    "fields": {
+      "created": "2023-03-29T15:19:44.705Z",
+      "last_updated": "2023-03-29T15:19:44.705Z",
+      "name": "re1.console",
+      "_name": "re00000001.console",
+      "label": "",
+      "description": "",
+      "device_type": 16,
+      "module_type": null,
+      "type": "rj-45"
+    }
+  },
+  {
+    "model": "dcim.consoleporttemplate",
+    "pk": 9,
+    "fields": {
+      "created": "2023-07-18T14:34:41.524Z",
+      "last_updated": "2023-07-18T14:34:41.524Z",
+      "name": "console",
+      "_name": "console",
+      "label": "",
+      "description": "",
+      "device_type": 23,
+      "module_type": null,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 145,
+    "fields": {
+      "created": "2023-07-18T14:35:28.659Z",
+      "last_updated": "2023-07-18T14:35:28.659Z",
+      "name": "{module}/0",
+      "_name": "{module}/00000000",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 146,
+    "fields": {
+      "created": "2023-07-18T14:35:28.664Z",
+      "last_updated": "2023-07-18T14:35:28.664Z",
+      "name": "{module}/1",
+      "_name": "{module}/00000001",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 147,
+    "fields": {
+      "created": "2023-07-18T14:35:28.669Z",
+      "last_updated": "2023-07-18T14:35:28.669Z",
+      "name": "{module}/2",
+      "_name": "{module}/00000002",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 148,
+    "fields": {
+      "created": "2023-07-18T14:35:28.674Z",
+      "last_updated": "2023-07-18T14:35:28.674Z",
+      "name": "{module}/3",
+      "_name": "{module}/00000003",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 149,
+    "fields": {
+      "created": "2023-07-18T14:35:28.679Z",
+      "last_updated": "2023-07-18T14:35:28.679Z",
+      "name": "{module}/4",
+      "_name": "{module}/00000004",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 150,
+    "fields": {
+      "created": "2023-07-18T14:35:28.684Z",
+      "last_updated": "2023-07-18T14:35:28.684Z",
+      "name": "{module}/5",
+      "_name": "{module}/00000005",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 151,
+    "fields": {
+      "created": "2023-07-18T14:35:28.689Z",
+      "last_updated": "2023-07-18T14:35:28.689Z",
+      "name": "{module}/6",
+      "_name": "{module}/00000006",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 152,
+    "fields": {
+      "created": "2023-07-18T14:35:28.694Z",
+      "last_updated": "2023-07-18T14:35:28.694Z",
+      "name": "{module}/7",
+      "_name": "{module}/00000007",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 153,
+    "fields": {
+      "created": "2023-07-18T14:35:28.698Z",
+      "last_updated": "2023-07-18T14:35:28.698Z",
+      "name": "{module}/8",
+      "_name": "{module}/00000008",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 154,
+    "fields": {
+      "created": "2023-07-18T14:35:28.703Z",
+      "last_updated": "2023-07-18T14:35:28.703Z",
+      "name": "{module}/9",
+      "_name": "{module}/00000009",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 155,
+    "fields": {
+      "created": "2023-07-18T14:35:28.708Z",
+      "last_updated": "2023-07-18T14:35:28.708Z",
+      "name": "{module}/10",
+      "_name": "{module}/00000010",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 156,
+    "fields": {
+      "created": "2023-07-18T14:35:28.713Z",
+      "last_updated": "2023-07-18T14:35:28.713Z",
+      "name": "{module}/11",
+      "_name": "{module}/00000011",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 157,
+    "fields": {
+      "created": "2023-07-18T14:35:28.721Z",
+      "last_updated": "2023-07-18T14:35:28.721Z",
+      "name": "{module}/12",
+      "_name": "{module}/00000012",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 158,
+    "fields": {
+      "created": "2023-07-18T14:35:28.825Z",
+      "last_updated": "2023-07-18T14:35:28.825Z",
+      "name": "{module}/13",
+      "_name": "{module}/00000013",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 159,
+    "fields": {
+      "created": "2023-07-18T14:35:28.831Z",
+      "last_updated": "2023-07-18T14:35:28.831Z",
+      "name": "{module}/14",
+      "_name": "{module}/00000014",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 160,
+    "fields": {
+      "created": "2023-07-18T14:35:28.837Z",
+      "last_updated": "2023-07-18T14:35:28.837Z",
+      "name": "{module}/15",
+      "_name": "{module}/00000015",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 161,
+    "fields": {
+      "created": "2023-07-18T14:35:28.843Z",
+      "last_updated": "2023-07-18T14:35:28.843Z",
+      "name": "{module}/16",
+      "_name": "{module}/00000016",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 162,
+    "fields": {
+      "created": "2023-07-18T14:35:28.848Z",
+      "last_updated": "2023-07-18T14:35:28.848Z",
+      "name": "{module}/17",
+      "_name": "{module}/00000017",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 163,
+    "fields": {
+      "created": "2023-07-18T14:35:28.853Z",
+      "last_updated": "2023-07-18T14:35:28.853Z",
+      "name": "{module}/18",
+      "_name": "{module}/00000018",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 164,
+    "fields": {
+      "created": "2023-07-18T14:35:28.858Z",
+      "last_updated": "2023-07-18T14:35:28.858Z",
+      "name": "{module}/19",
+      "_name": "{module}/00000019",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 165,
+    "fields": {
+      "created": "2023-07-18T14:35:28.863Z",
+      "last_updated": "2023-07-18T14:35:28.863Z",
+      "name": "{module}/20",
+      "_name": "{module}/00000020",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 166,
+    "fields": {
+      "created": "2023-07-18T14:35:28.872Z",
+      "last_updated": "2023-07-18T14:35:28.872Z",
+      "name": "{module}/21",
+      "_name": "{module}/00000021",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 167,
+    "fields": {
+      "created": "2023-07-18T14:35:28.878Z",
+      "last_updated": "2023-07-18T14:35:28.878Z",
+      "name": "{module}/22",
+      "_name": "{module}/00000022",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.consoleserverporttemplate",
+    "pk": 168,
+    "fields": {
+      "created": "2023-07-18T14:35:28.883Z",
+      "last_updated": "2023-07-18T14:35:28.883Z",
+      "name": "{module}/23",
+      "_name": "{module}/00000023",
+      "label": "",
+      "description": "",
+      "device_type": null,
+      "module_type": 10,
+      "type": ""
+    }
+  },
+  {
+    "model": "dcim.devicerole",
+    "pk": 5,
+    "fields": {
+      "created": "2023-03-21T10:31:36.540Z",
+      "last_updated": "2023-10-31T11:36:18.573Z",
+      "custom_field_data": {},
+      "name": "Provider Edge Router (PE)",
+      "slug": "pe",
+      "color": "9c27b0",
+      "vm_role": false,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.devicerole",
+    "pk": 6,
+    "fields": {
+      "created": "2023-03-21T10:31:53.846Z",
+      "last_updated": "2023-10-31T10:46:02.160Z",
+      "custom_field_data": {},
+      "name": "Peer",
+      "slug": "peer",
+      "color": "9e9e9e",
+      "vm_role": false,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.devicerole",
+    "pk": 7,
+    "fields": {
+      "created": "2023-03-29T15:22:40.233Z",
+      "last_updated": "2023-10-31T11:36:33.972Z",
+      "custom_field_data": {},
+      "name": "Edge Router",
+      "slug": "edge-router",
+      "color": "673ab7",
+      "vm_role": false,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.devicerole",
+    "pk": 9,
+    "fields": {
+      "created": "2023-07-18T14:30:51.509Z",
+      "last_updated": "2023-07-18T14:30:51.509Z",
+      "custom_field_data": {},
+      "name": "Console Server",
+      "slug": "console-server",
+      "color": "ff9800",
+      "vm_role": false,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.devicerole",
+    "pk": 10,
+    "fields": {
+      "created": "2023-07-18T15:16:30.108Z",
+      "last_updated": "2023-07-18T15:16:30.108Z",
+      "custom_field_data": {},
+      "name": "Patch Panel",
+      "slug": "patch-panel",
+      "color": "9e9e9e",
+      "vm_role": false,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.platform",
+    "pk": 2,
+    "fields": {
+      "created": "2023-03-29T15:26:01.327Z",
+      "last_updated": "2023-03-29T15:26:01.327Z",
+      "custom_field_data": {},
+      "name": "Junos",
+      "slug": "junos",
+      "manufacturer": 6,
+      "napalm_driver": "",
+      "napalm_args": null,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.platform",
+    "pk": 3,
+    "fields": {
+      "created": "2023-10-31T10:46:24.573Z",
+      "last_updated": "2023-10-31T10:47:14.383Z",
+      "custom_field_data": {},
+      "name": "EOS",
+      "slug": "eos",
+      "manufacturer": 12,
+      "napalm_driver": "",
+      "napalm_args": null,
+      "description": ""
+    }
+  },
+  {
+    "model": "dcim.platform",
+    "pk": 4,
+    "fields": {
+      "created": "2023-10-31T10:46:56.491Z",
+      "last_updated": "2023-10-31T10:46:56.491Z",
+      "custom_field_data": {},
+      "name": "Junos EVO",
+      "slug": "junos-evo",
+      "manufacturer": 6,
+      "napalm_driver": "",
+      "napalm_args": null,
+      "description": ""
+    }
+  },
+  {
+    "model": "ipam.role",
+    "pk": 1,
+    "fields": {
+      "created": "2019-11-05T00:00:00Z",
+      "last_updated": "2019-11-05T00:12:36.393Z",
+      "custom_field_data": {},
+      "name": "Site local",
+      "slug": "site-local",
+      "weight": 1000,
+      "description": ""
+    }
+  },
+  {
+    "model": "ipam.role",
+    "pk": 4,
+    "fields": {
+      "created": "2023-07-06T10:23:31.505Z",
+      "last_updated": "2023-07-06T10:23:31.505Z",
+      "custom_field_data": {},
+      "name": "Transfer Network",
+      "slug": "transfer-network",
+      "weight": 1000,
+      "description": ""
+    }
+  },
+  {
+    "model": "ipam.role",
+    "pk": 5,
+    "fields": {
+      "created": "2023-09-26T13:31:56.902Z",
+      "last_updated": "2023-10-31T10:51:04.187Z",
+      "custom_field_data": {},
+      "name": "Loopback IPs",
+      "slug": "loopback-ips",
+      "weight": 1000,
+      "description": ""
+    }
+  }
+]

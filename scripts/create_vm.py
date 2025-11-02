@@ -7,14 +7,14 @@ https://github.com/netbox-community/netbox/issues/1492
 https://github.com/netbox-community/netbox/issues/648
 """
 
-from dcim.models import DeviceRole, Platform
+from dcim.models import DeviceRole, Platform, MACAddress
 from django.core.exceptions import ObjectDoesNotExist
 from extras.models import Tag
 from ipam.choices import IPAddressStatusChoices
 from ipam.models import IPAddress, VRF
 from tenancy.models import Tenant
 from virtualization.choices import VirtualMachineStatusChoices
-from virtualization.models import Cluster, VirtualMachine, VMInterface
+from virtualization.models import Cluster, VirtualMachine, VMInterface, VirtualDisk
 from extras.scripts import Script, StringVar, IPAddressWithMaskVar, ObjectVar, MultiObjectVar, ChoiceVar, IntegerVar, TextVar
 
 class NewVM(Script):
@@ -39,7 +39,8 @@ class NewVM(Script):
     mac_address = StringVar(label="MAC address", required=False)
     vcpus = IntegerVar(label="VCPUs", required=False)
     memory = IntegerVar(label="Memory (MB)", required=False)
-    disk = IntegerVar(label="Disk (GB)", required=False)
+    disk_name = StringVar(label="Disk Name", required=False)
+    disk_size = IntegerVar(label="Disk (MB)", required=False)
     comments = TextVar(label="Comments", required=False)
 
     def run(self, data, commit):
@@ -51,7 +52,6 @@ class NewVM(Script):
             platform=data["platform"],
             vcpus=data["vcpus"],
             memory=data["memory"],
-            disk=data["disk"],
             comments=data["comments"],
             tenant=data.get("tenant"),
         )
@@ -61,11 +61,30 @@ class NewVM(Script):
 
         vminterface = VMInterface(
             name=data["interface_name"],
-            mac_address=data["mac_address"],
-            virtual_machine=vm,
+            virtual_machine=vm
         )
         vminterface.full_clean()
         vminterface.save()
+
+        if data["mac_address"]:
+            vmmacaddr = MACAddress(
+                mac_address = data["mac_address"],
+                assigned_object = vminterface
+            )
+            vmmacaddr.full_clean()
+            vmmacaddr.save()
+            setattr(vminterface, "primary_mac_address", vmmacaddr)
+            vminterface.full_clean()
+            vminterface.save()
+
+        if data["disk_name"]:
+            vmdisk = VirtualDisk(
+                name=data["disk_name"],
+                virtual_machine=vm,
+                size=data["disk_size"]
+            )
+            vmdisk.full_clean()
+            vmdisk.save()
 
         def add_addr(addr, family):
             if not addr:
